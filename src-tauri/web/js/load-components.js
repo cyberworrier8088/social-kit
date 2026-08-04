@@ -22,6 +22,7 @@ loadComponent("topbar", "components/topbar.html");
 loadComponent("welcome-card", "components/welcome-card.html");
 loadComponent("scan-form", "components/scan-form.html");
 loadComponent("progress-card", "components/progress-card.html");
+loadComponent("results-table", "components/results-table.html");
 
 loadStatusCard("cpu-card", "CPU", "Processor Utilization");
 loadStatusCard("memory-card", "Memory", "System RAM Usage");

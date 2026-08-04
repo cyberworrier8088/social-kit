@@ -14,7 +14,7 @@ pub fn scan_tcp(request: ScanRequest) -> ScanResult {
         if let Some(socket) = addresses.next() {
             open = TcpStream::connect_timeout(
                 &socket,
-                Duration::from_secs(request.timeout)
+                Duration::from_millis(request.timeout)
             ).is_ok();
         }
     }
