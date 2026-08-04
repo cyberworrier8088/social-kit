@@ -1,21 +1,27 @@
 async function loadComponent(id, file) {
+    const el = document.getElementById(id);
+    if (!el) return;
     const response = await fetch(file);
     const html = await response.text();
-    document.getElementById(id).innerHTML = html;
+    el.innerHTML = html;
 }
 
 async function loadStatusCard(id, title, description) {
+    const el = document.getElementById(id);
+    if (!el) return;
     const response = await fetch("components/status-card.html");
     let html = await response.text();
     html = html.replace("{{TITLE}}", title)
-               .replace("{{VALUE}}", `<span id="${id}-value">Loading...</span>`)
-               .replace("{{DESCRIPTION}}", description);
-    document.getElementById(id).innerHTML = html;
+        .replace("{{VALUE}}", `<span id="${id}-value">Loading...</span>`)
+        .replace("{{DESCRIPTION}}", description);
+    el.innerHTML = html;
 }
 
 loadComponent("sidebar", "components/sidebar.html");
 loadComponent("topbar", "components/topbar.html");
 loadComponent("welcome-card", "components/welcome-card.html");
+loadComponent("scan-form", "components/scan-form.html");
+loadComponent("progress-card", "components/progress-card.html");
 
 loadStatusCard("cpu-card", "CPU", "Processor Utilization");
 loadStatusCard("memory-card", "Memory", "System RAM Usage");

@@ -1,0 +1,90 @@
+<div class="scan-form">
+    <h2>Scan Target</h2>
+
+    <label>Target</label>
+
+    <input id="target" type="text" placeholder="192.168.1.1 or example.com">
+
+    <div class="ports">
+
+        <div class="options">
+
+            <div>
+
+                <label>Timeout</label>
+
+                <select id="timeout">
+                    <option value="500">500 ms</option>
+                    <option value="1000" selected>1000 ms</option>
+                    <option value="3000">3000 ms</option>
+                </select>
+
+            </div>
+
+            <div>
+
+                <label>Threads</label>
+
+                <select id="threads">
+                    <option>10</option>
+                    <option>25</option>
+                    <option selected>50</option>
+                    <option>100</option>
+                </select>
+
+            </div>
+
+        </div>
+
+        <label>Scan Profile</label>
+
+        <select id="profile">
+
+            <option value="quick" selected>
+                Quick Scan
+            </option>
+
+            <option value="top100">
+                Top 100 Ports
+            </option>
+
+            <option value="top1000">
+                Top 1000 Ports
+            </option>
+
+            <option value="full">
+                Full Scan
+            </option>
+
+            <option value="custom">
+                Custom
+            </option>
+
+        </select>
+
+        <div>
+            <label>Start Port</label>
+
+            <input id="start-port" type="number" value="1" min="1" max="65535">
+
+        </div>
+
+        <div>
+
+            <label>End Port</label>
+
+            <input id="end-port" type="number" value="1024" min="1" max="65535">
+
+        </div>
+
+    </div>
+
+    <div class="buttons">
+
+        <button id="start-scan">Start Scan</button>
+
+        <button id="stop-scan">Stop</button>
+
+    </div>
+
+</div>
