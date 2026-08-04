@@ -1,0 +1,68 @@
+.topbar {
+    margin-left: 260px;
+
+    height: 70px;
+    background: #0d1117;
+
+    border-bottom: 1px solid #30363d;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 25px;
+}
+
+.title {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-actions input {
+
+    width: 250px;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #21262d;
+
+    color: white;
+
+}
+
+.top-actions button {
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    background: #21262d;
+
+    color: white;
+
+}
+
+.top-actions button:hover {
+
+    background: #30363d;
+
+}
