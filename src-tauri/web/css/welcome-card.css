@@ -1,0 +1,31 @@
+.welcome-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+
+    border-radius: 15px;
+    padding: 35px;
+
+    color: white;
+
+    margin-bottom: 25px;
+
+
+
+}
+
+
+.welcome-card h1 {
+    margin-bottom: 10px;
+
+}
+
+.welcome-card h2 {
+    margin-bottom: 15px;
+    color: #238636;
+}
+
+.welcome-card p {
+    color: #9ca3af;
+
+    margin-bottom: 8px;
+}

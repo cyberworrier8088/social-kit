@@ -11,3 +11,5 @@ async function loadComponent(id, file) {
 loadComponent("sidebar", "components/sidebar.html");
 
 loadComponent("topbar", "components/topbar.html");
+
+loadComponent("welcome-card", "components/welcome-card.html");
