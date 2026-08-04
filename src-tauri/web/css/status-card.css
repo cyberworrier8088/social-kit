@@ -1,0 +1,28 @@
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.status-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+}
+
+.value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #3fb950;
+}
+
+.status-card p {
+
+    margin-top: 10px;
+
+    color: #9ca3af;
+
+}
