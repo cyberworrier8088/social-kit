@@ -100,44 +100,31 @@ async function searchUsername() {
     }
 
     try {
-        const result = await invoke("search", {
-            request: {
-                username
-            }
-        });
-
-        console.log(result);
-
-        updateGitHubCard(result);
-
-
-        // reddit code
-
-        try {
-            const reddit = await invoke(
-                "search_reddit",
-                {
+        const results = await invoke(
+            "search_all_command",
+            {
+                request: {
                     username
                 }
-            );
+            }
+        );
 
-            updateRedditCard(reddit);
-        } catch (error) {
+        console.log(results);
 
-            document.getElementById("reddit-status").textContent = "Not Found";
+        if (results.github) {
 
-            console.log("Reddit Error", error);
+            updateGitHubCard(results.github);
+
         }
+        if (results.reddit) {
 
-        setStatus("Profile Found");
-    } catch (error) {
+            updateRedditCard(results.reddit);
+        }
+    }
 
+
+    catch (error) {
         console.error(error);
-
-        setStatus("user not found");
-
-        alert("user not found or network error")
-
     } finally {
         setLoading(false);
     }

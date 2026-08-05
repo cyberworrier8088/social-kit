@@ -1,6 +1,7 @@
 pub mod github;
 pub mod types;
 pub mod reddit;
+pub mod manager;
 
 
 use github::search_github;
@@ -11,6 +12,7 @@ use types::{
 
 use reddit::search_riddit as fetch_reddit_profile;
 use types::RedditProfile;
+use manager::{search_all, SearchResults};
 
 #[tauri::command]
 pub fn search_git(
@@ -31,4 +33,13 @@ pub fn search_riddit (
 ) -> Result<RedditProfile, String> {
 
     fetch_reddit_profile(&username)
+}
+
+
+#[tauri::command]
+pub fn search_all_command(
+    request: UsernameSearchRequest,
+) -> SearchResults {
+
+    search_all(request)
 }

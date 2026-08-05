@@ -26,6 +26,7 @@ pub fn run() {
       scanner::scan,
       osint::search_git,
       osint::search_riddit,
+      osint::search_all_command,
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
