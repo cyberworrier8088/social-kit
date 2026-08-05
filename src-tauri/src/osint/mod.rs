@@ -5,12 +5,17 @@ pub mod types;
 use github::search_github;
 use types::{
     UsernameSearchRequest,
-    UsernameSearchResult,
+    GithubProfile,
 };
 
 #[tauri::command]
 pub fn search(
     request: UsernameSearchRequest,
-) -> UsernameSearchResult {
+) -> Result<GithubProfile, String> {
+
+
+    println!("OSINT Search callled; {}", request.username);
+    
     search_github(request)
+
 }
