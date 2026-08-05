@@ -34,3 +34,18 @@ pub struct GithubProfile {
 
     pub created_at: String,
 }
+
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RedditProfile {
+    
+    pub name: String,
+    
+    pub icon_img: String,
+
+    pub total_karma: u32,
+
+    pub created_utc: f64,
+
+    pub profile_url: String,
+}

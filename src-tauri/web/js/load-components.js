@@ -25,7 +25,8 @@ loadComponent("progress-card", "components/progress-card.html");
 loadComponent("results-table", "components/results-table.html");
 loadComponent("username-form", "components/username-form.html");
 loadComponent("github-card-container", "components/github-card.html");
-loadComponent("osint-results", "components/osint-results.html")
+loadComponent("osint-results", "components/osint-results.html");
+loadComponent("reddit-card-container", "components/reddit-card.html");
 
 loadStatusCard("cpu-card", "CPU", "Processor Utilization");
 loadStatusCard("memory-card", "Memory", "System RAM Usage");

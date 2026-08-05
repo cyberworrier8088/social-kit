@@ -110,6 +110,25 @@ async function searchUsername() {
 
         updateGitHubCard(result);
 
+
+        // reddit code
+
+        try {
+            const reddit = await invoke(
+                "search_reddit",
+                {
+                    username
+                }
+            );
+
+            updateRedditCard(reddit);
+        } catch (error) {
+
+            document.getElementById("reddit-status").textContent = "Not Found";
+
+            console.log("Reddit Error", error);
+        }
+
         setStatus("Profile Found");
     } catch (error) {
 
@@ -141,3 +160,17 @@ document.addEventListener("click", (event) => {
         clearForm();
     }
 });
+
+function updateRedditCard(profile) {
+    document.getElementById("reddit-status").textContent = "FOUND!";
+
+    document.getElementById("reddit-avatar").src = profile.icon_img;
+
+    document.getElementById("reddit-name").textContent = profile.name;
+
+    document.getElementById("reddit-karma").textContent = "Karma: " + profile.total_karma;
+
+    document.getElementById("reddit-profile").href = profile.profile_url;
+
+
+}
