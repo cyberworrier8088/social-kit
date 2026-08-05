@@ -3,3 +3,42 @@ h1 {
 
     margin-bottom: 20px;
 }
+
+.results-card {
+    margin-top: 25px;
+    background: #161b22;
+
+    border: 1px solid #30363d;
+
+    border-radius: 12px;
+    padding: 25px;
+    color: white;
+}
+
+.results-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+}
+
+
+.results-table th {
+    background: #21262d;
+    padding: 12px;
+    text-align: left;
+}
+
+
+.results-table td {
+    padding: 12px;
+
+    border-top: 1px solid #30363d;
+
+}
+
+
+.results-table tr:hover {
+    background: #1f242d;
+}

@@ -1,0 +1,59 @@
+.username-form {
+    margin-top: 20px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+
+    padding: 25px;
+
+    color: white;
+}
+
+.username-form label {
+    display: block;
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+}
+
+.username-form input,
+.username-form select {
+    width: 100%;
+
+    padding: 12px;
+    border: none;
+
+    border-radius: 8px;
+    background: #21262d;
+    color: white;
+}
+
+.username-form .buttons {
+    display: flex;
+
+    gap: 15px;
+    margin-top: 25px;
+
+}
+
+.username-form button {
+    padding: 12px 24px;
+
+    border: none;
+
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#search-btn {
+    background: #238636;
+
+    color: white;
+
+}
+
+#clear-btn {
+    background: #30363d;
+
+    color: white;
+}

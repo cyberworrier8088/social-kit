@@ -1,6 +1,7 @@
 use tauri::Manager;
 mod system;
 mod scanner;
+mod osint;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -23,6 +24,7 @@ pub fn run() {
       system::get_network_info,
       system::get_os_info,
       scanner::scan,
+      osint::search,
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
