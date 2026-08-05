@@ -38,6 +38,9 @@
     border-radius: 50%;
     border: 2px solid #3fb950;
     margin-bottom: 15px;
+    object-fit: cover;
+    background: #21262d;
+    box-shadow: 0 0 20px rgba(63, 185, 80, 0.25);
 }
 
 #github-name {
