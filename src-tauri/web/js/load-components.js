@@ -28,6 +28,7 @@ loadComponent("github-card-container", "components/github-card.html");
 loadComponent("osint-results", "components/osint-results.html");
 loadComponent("reddit-card-container", "components/reddit-card.html");
 loadComponent("instagram-card-container", "components/instagram-card.html");
+loadComponent("search-progress", "components/search-progress.html");
 
 loadStatusCard("cpu-card", "CPU", "Processor Utilization");
 loadStatusCard("memory-card", "Memory", "System RAM Usage");

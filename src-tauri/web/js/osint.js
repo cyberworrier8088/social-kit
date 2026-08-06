@@ -100,6 +100,13 @@ async function searchUsername() {
     }
 
     try {
+        const ghProgress = document.getElementById("github-progress");
+        const rdProgress = document.getElementById("reddit-progress");
+        const igProgress = document.getElementById("instagram-progress");
+
+        if (ghProgress) ghProgress.textContent = "Github: Searching...";
+        if (rdProgress) rdProgress.textContent = "Reddit: Searching...";
+        if (igProgress) igProgress.textContent = "Instagram: Searching...";
         const results = await invoke(
             "search_all_command",
             {
@@ -110,6 +117,10 @@ async function searchUsername() {
         );
 
         console.log(results);
+
+        if (ghProgress) ghProgress.textContent = results.github ? "Github: Found!" : "Github: Not Found";
+        if (rdProgress) rdProgress.textContent = results.reddit ? "Reddit: Found!" : "Reddit: Not Found";
+        if (igProgress) igProgress.textContent = results.instagram ? "Instagram: Found!" : "Instagram: Not Found";
 
         if (results.github) {
 
