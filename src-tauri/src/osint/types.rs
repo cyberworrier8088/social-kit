@@ -49,3 +49,24 @@ pub struct RedditProfile {
 
     pub profile_url: String,
 }
+
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct InstagramProfile {
+
+    pub username: String,
+
+    pub full_name: String,
+
+    pub biography: String,
+
+    pub profile_pic_url: String,
+
+    pub followers: u64,
+
+    pub following: u64,
+
+    pub verified: bool,
+
+    pub profile_url: String,
+}

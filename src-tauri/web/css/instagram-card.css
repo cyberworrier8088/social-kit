@@ -1,0 +1,108 @@
+.platform-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 25px;
+    color: white;
+    margin-top: 25px;
+}
+
+.platform-header {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+
+.platform-body {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+#instagram-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+    object-fit: cover;
+    border: 3px solid #E1306C;
+    margin-bottom: 15px;
+    background: #21262d;
+}
+
+
+#instagram-username {
+    color: #9ca3af;
+    margin-bottom: 15px;
+}
+
+#instagram-bio {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d1d5db;
+
+}
+
+.stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stats div {
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.stats strong {
+    display: block;
+    font-size: 22px;
+}
+
+.info {
+    width: 100%;
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.info p {
+    margin: 10px 0;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    ;
+}
+
+.buttons a,
+.buttons button {
+
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background: #E1306C;
+    color: white;
+    font-weight: bold;
+
+}
