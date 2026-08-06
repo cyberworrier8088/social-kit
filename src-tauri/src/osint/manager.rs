@@ -6,9 +6,11 @@ use std::thread;
 use super::{
     github::search_github,
     reddit::search_riddit,
+    instagram::search_instagram,
     types::{
         GithubProfile,
         RedditProfile,
+        InstagramProfile,
         UsernameSearchRequest,
     },
 };
@@ -21,6 +23,8 @@ pub struct SearchResults {
     pub github: Option<GithubProfile>,
 
     pub reddit: Option<RedditProfile>,
+
+    pub instagram: Option<InstagramProfile>,
 }
 
 pub fn search_all(
@@ -59,10 +63,14 @@ pub fn search_all(
 
     let reddit = reddit_thread.join().unwrap();
 
+    let instagram = search_instagram(&request.username).ok();
+
     SearchResults {
 
         github,
 
         reddit,
+
+        instagram,
     }
 }

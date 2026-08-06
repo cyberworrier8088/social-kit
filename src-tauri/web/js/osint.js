@@ -120,6 +120,12 @@ async function searchUsername() {
 
             updateRedditCard(results.reddit);
         }
+
+        if (results.instagram) {
+
+            updateInstagramCard(results.instagram);
+
+        }
     }
 
 
@@ -177,13 +183,7 @@ function updateInstagramCard(profile) {
 
     document.getElementById("instagram-following").textContent = profile.following;
 
-    document.getElementById("instagram-posts").textContent = profile.posts;
-
     document.getElementById("instagram-verified").textContent = profile.verified ? "Yes" : "No";
 
-    document.getElementById("instagram-business").textContent = profile.business || "-";
-
-    document.getElementById("instagram-category").textContent = profile.category || "-";
-
-    document.getElementById("instgram-profile").href = profile.profile_url;
+    document.getElementById("instagram-profile").href = profile.profile_url;
 }

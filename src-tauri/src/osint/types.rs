@@ -69,4 +69,4 @@ pub struct InstagramProfile {
     pub verified: bool,
 
     pub profile_url: String,
-}
+}
