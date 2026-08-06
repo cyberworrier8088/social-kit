@@ -1,0 +1,43 @@
+#reddit-status {
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+#reddit-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #ff4500; /* Reddit orange border */
+    margin-bottom: 15px;
+    background-color: white; 
+}
+
+#reddit-name {
+    margin: 5px 0;
+    font-size: 24px;
+}
+
+#reddit-karma {
+    color: #9ca3af;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+#reddit-profile {
+    display: inline-block;
+    background: #ff4500; /* Reddit orange button */
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    transition: background 0.2s;
+    box-sizing: border-box;
+    margin-top: 15px;
+}
+
+#reddit-profile:hover {
+    background: #ff5722; /* Lighter orange for hover */
+}

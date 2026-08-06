@@ -23,6 +23,7 @@ pub fn run() {
       system::get_disk_info,
       system::get_network_info,
       system::get_os_info,
+      system::open_in_browser,
       scanner::scan,
       osint::search_git,
       osint::search_riddit,

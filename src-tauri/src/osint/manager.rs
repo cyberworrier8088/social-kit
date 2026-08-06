@@ -1,5 +1,6 @@
 
 use serde::Serialize;
+use std::thread;
 
 
 use super::{
@@ -26,16 +27,37 @@ pub fn search_all(
     request: UsernameSearchRequest,
 ) -> SearchResults {
 
-    let github = search_github(
-        UsernameSearchRequest {
-            username: request.username.clone(),
+    let username = request.username.clone();
+
+    let github_thread = thread::spawn({
+
+        let username = username.clone();
+
+        move || {
+
+            search_github(
+                UsernameSearchRequest {
+                    username,
+                }
+            ).ok()
         }
-    ).ok();
+    });
+
+    let reddit_thread = thread::spawn({
+
+        let username = username.clone();
+
+        move || {
+
+            search_riddit(&username).ok()
+        }
+    });
 
 
-    let reddit = search_riddit(
-        &request.username
-    ).ok();
+
+    let github = github_thread.join().unwrap();
+
+    let reddit = reddit_thread.join().unwrap();
 
     SearchResults {
 

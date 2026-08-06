@@ -12,7 +12,7 @@ pub fn search_riddit(
 
     let response = client.get(&url).header("User-agent", "SocialKit/1.0").send().map_err(|e| e.to_string())?;
 
-    if response.status().is_success() {
+    if !response.status().is_success() {
         return Err(format!("Reddit return {}", response.status()));
     }
 
