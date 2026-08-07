@@ -72,7 +72,7 @@ pub struct InstagramProfile {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct GithubProfile {
+pub struct GitLabProfile {
 
     pub username: String,
 

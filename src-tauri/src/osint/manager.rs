@@ -7,10 +7,12 @@ use super::{
     github::search_github,
     reddit::search_riddit,
     instagram::search_instagram,
+    gitlab::search_gitlab,
     types::{
         GithubProfile,
         RedditProfile,
         InstagramProfile,
+        GitLabProfile,
         UsernameSearchRequest,
     },
 };
@@ -25,6 +27,8 @@ pub struct SearchResults {
     pub reddit: Option<RedditProfile>,
 
     pub instagram: Option<InstagramProfile>,
+
+    pub gitlab: Option<GitLabProfile>,
 }
 
 pub fn search_all(
@@ -65,12 +69,16 @@ pub fn search_all(
 
     let instagram = search_instagram(&request.username).ok();
 
+    let gitlab = search_gitlab(&request.username).ok();
+
     SearchResults {
 
         github,
 
         reddit,
 
+        gitlab,
+        
         instagram,
     }
 }
