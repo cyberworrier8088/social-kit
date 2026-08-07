@@ -137,6 +137,11 @@ async function searchUsername() {
             updateInstagramCard(results.instagram);
 
         }
+
+        if (results.gitlab) {
+
+            updateGitLabCard(results.gitlab);
+        }
     }
 
 
@@ -198,3 +203,27 @@ function updateInstagramCard(profile) {
 
     document.getElementById("instagram-profile").href = profile.profile_url;
 }
+
+function updateGitLabCard(profile) {
+
+    document.getElementById("gitlab-status").textContent = "Found";
+
+    document.getElementById("gitlab-avatar").src = profile.avatar_url;
+
+    document.getElementById("gitlab-name").textContent = profile.name || "-";
+
+    document.getElementById("gitlab-username").textContent = "@" + profile.username;
+
+    document.getElementById("gitlab-bio").textContent = profile.bio || "No bio";
+
+    document.getElementById("gitlab-followers").textContent = profile.following;
+
+    document.getElementById("gitlab-following").textContent = profile.following;
+
+    document.getElementById("gitlab-location").textContent = profile.location || "-";
+
+    document.getElementById("gitlab-organization").textContent = profile.organization || "-";
+
+    document.getElementById("gitlab-profile").href = profile.web_url;
+}
+
