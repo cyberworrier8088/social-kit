@@ -2,6 +2,7 @@ pub mod github;
 pub mod types;
 pub mod reddit;
 pub mod instagram;
+pub mod gitlab;
 pub mod manager;
 
 

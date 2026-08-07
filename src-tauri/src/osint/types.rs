@@ -69,4 +69,28 @@ pub struct InstagramProfile {
     pub verified: bool,
 
     pub profile_url: String,
-}
+}
+
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
+pub struct GithubProfile {
+
+    pub username: String,
+
+    pub name: String,
+
+    pub avatar_url: String,
+
+    pub bio: String,
+
+    pub web_url: String,
+
+    pub location: String,
+
+    pub organization: String,
+
+    pub followers: u32,
+
+    pub following: u32,
+}
+
+
