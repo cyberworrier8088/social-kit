@@ -98,3 +98,33 @@
     font-family: monospace;
 
 }
+
+.live-status {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #8b949e;
+    font-size: 14px;
+}
+
+#live-dot {
+
+    color: #8b949e;
+
+}
+
+#live-dot.live {
+
+    color: #238636;
+
+}
+
+#last-check {
+
+    margin-left: auto;
+
+    font-family: monospace;
+
+}

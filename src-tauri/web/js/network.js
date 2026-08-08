@@ -1,6 +1,9 @@
 const { invoke } = window.__TAURI__.core;
 
+let monitoring = false;
+
 async function analyzeTarget() {
+
 
     const target = document.getElementById("target").value.trim();
 
@@ -79,13 +82,89 @@ async function analyzeTarget() {
 
 }
 
+
+async function startMonitoring() {
+
+    if (monitoring) {
+        return;
+    }
+
+    monitoring = true;
+
+    updateLiveStatus();
+
+    document.getElementById("analyze-btn").disabled = true;
+    document.getElementById("stop-btn").disabled = false;
+
+    while (monitoring) {
+
+        await analyzeTarget();
+
+        updateLiveStatus();
+
+
+        if (!monitoring) {
+            break;
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+
+}
+
+function stopMonitoring() {
+
+    monitoring = false;
+
+    updateLiveStatus();
+
+    document.getElementById("analyze-btn").disabled = false;
+
+    document.getElementById("stop-btn").disabled = true;
+}
+
+
+
+
+function updateLiveStatus() {
+
+    const dot = document.getElementById("live-dot");
+
+    const text = document.getElementById("live-text");
+
+    const lastCheck = document.getElementById("last-check");
+
+    if (monitoring) {
+
+        dot.classList.add("live");
+
+        text.textContent = "LIVE";
+
+        lastCheck.textContent = "Last Check: " + new Date().toLocaleTimeString();
+    } else {
+
+        dot.classList.remove("live");
+
+        text.textContent = "Not Monitoring";
+
+        lastCheck.textContent = "-";
+    }
+}
+
 document.addEventListener(
     "click",
     (event) => {
 
         if (event.target.id === "analyze-btn") {
 
-            analyzeTarget();
+            startMonitoring();
+
+        }
+
+        if (event.target.id === "stop-btn") {
+
+            stopMonitoring();
+
         }
     }
 );
