@@ -1,5 +1,6 @@
 use super::ping::ping_target;
 use super::resolver::resolve_target;
+use super::dns::lookup_dns;
 use super::types::*;
 
 pub async fn analyze(
@@ -37,9 +38,13 @@ pub async fn analyze(
             max_latency: None,
 
             average_latency: None,
+
+            dns: None,
          };
       }
    };
+
+   let dns = lookup_dns(&request.target).await.ok();
 
    let stats = match ping_target(ip).await {
 
@@ -70,6 +75,8 @@ pub async fn analyze(
             max_latency: None,
 
             average_latency: None,
+
+            dns: None,
          };
       }
    };
@@ -96,5 +103,7 @@ pub async fn analyze(
       max_latency: stats.max_latency,
 
       average_latency: stats.average_latency,
+
+      dns,
    }
 }

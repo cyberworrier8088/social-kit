@@ -1,7 +1,9 @@
 pub mod manager;
 pub mod ping;
 pub mod resolver;
+pub mod dns;
 pub mod types;
+
 
 
 use manager::analyze;

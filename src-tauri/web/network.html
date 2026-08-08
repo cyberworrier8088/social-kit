@@ -33,51 +33,67 @@
             <span id="last-check">-</span>
         </div>
 
-        <div id="ping-card" class="network-card">
-
-            <h2>Ip Address</h2>
-
-            <div id="ip-status">
-                waiting ......
+        <div class="cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div id="ip-card" class="network-card">
+                <h2>IP Address</h2>
+                <div id="ip-status">waiting ......</div>
+                <div id="ip-value" class="highlight-value">-</div>
             </div>
 
-            <div id="ip-value">-</div>
-
-            <br>
-
-            <h2>Ping Status</h2>
-
-            <div id="ping-status">
-                waiting ......
+            <div id="ping-card" class="network-card">
+                <h2>Ping Status</h2>
+                <div id="ping-status">waiting ......</div>
+                <div id="ping-value" class="highlight-value">-</div>
+                <div class="ping-row">
+                    <span>Packets (Rec/Sent)</span>
+                    <strong id="ping-packets">-</strong>
+                </div>
+                <div class="ping-row">
+                    <span>Packet Loss</span>
+                    <strong id="ping-loss">-</strong>
+                </div>
+                <div class="ping-row">
+                    <span>Minimum Latency</span>
+                    <strong id="ping-min">-</strong>
+                </div>
+                <div class="ping-row">
+                    <span>Average Latency</span>
+                    <strong id="ping-average">-</strong>
+                </div>
+                <div class="ping-row">
+                    <span>Maximum Latency</span>
+                    <strong id="ping-max">-</strong>
+                </div>
             </div>
 
-            <div id="ping-value">-</div>
-
-            <div class="ping-row">
-                <span>Packets</span>
-                <strong id="ping-packets">-</strong>
+            <div id="dns-card" class="network-card">
+                <h2>DNS Intelligence</h2>
+                <div id="dns-status">waiting ......</div>
+                <div class="dns-section">
+                    <h3>A Records</h3>
+                    <ul id="dns-a-list"></ul>
+                </div>
+                <div class="dns-section">
+                    <h3>AAAA Records</h3>
+                    <ul id="dns-aaaa-list"></ul>
+                </div>
+                <div class="dns-section">
+                    <h3>MX Records</h3>
+                    <ul id="dns-mx-list"></ul>
+                </div>
+                <div class="dns-section">
+                    <h3>TXT Records</h3>
+                    <ul id="dns-txt-list"></ul>
+                </div>
+                <div class="dns-section">
+                    <h3>NS Records</h3>
+                    <ul id="dns-ns-list"></ul>
+                </div>
+                <div class="dns-section">
+                    <h3>CNAME Records</h3>
+                    <ul id="dns-cname-list"></ul>
+                </div>
             </div>
-
-            <div class="ping-row">
-                <span>Packet Loss</span>
-                <strong id="ping-loss">-</strong>
-            </div>
-
-            <div class="ping-row">
-                <span>Minimum</span>
-                <strong id="ping-min">-</strong>
-            </div>
-
-            <div class="ping-row">
-                <span>Average</span>
-                <strong id="ping-average">-</strong>
-            </div>
-
-            <div class="ping-row">
-                <span>Maximum</span>
-                <strong id="ping-max">-</strong>
-            </div>
-
         </div>
     </div>
 

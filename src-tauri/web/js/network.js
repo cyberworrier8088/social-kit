@@ -78,8 +78,36 @@ async function analyzeTarget() {
 
     pingMax.textContent = result.max_latency !== null ? result.max_latency.toFixed(2) + " ms" : "-";
 
+    // Populate DNS Records
+    const dnsStatus = document.getElementById("dns-status");
+    if (result.dns) {
+        dnsStatus.textContent = "Resolved";
+        dnsStatus.setAttribute("data-state", "found");
 
+        const updateList = (id, items) => {
+            const ul = document.getElementById(id);
+            ul.innerHTML = "";
+            if (items && items.length > 0) {
+                items.forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+            } else {
+                ul.innerHTML = "<li>None</li>";
+            }
+        };
 
+        updateList("dns-a-list", result.dns.a);
+        updateList("dns-aaaa-list", result.dns.aaaa);
+        updateList("dns-mx-list", result.dns.mx);
+        updateList("dns-txt-list", result.dns.txt);
+        updateList("dns-ns-list", result.dns.ns);
+        updateList("dns-cname-list", result.dns.cname);
+    } else {
+        dnsStatus.textContent = "No DNS Data";
+        dnsStatus.setAttribute("data-state", "not-found");
+    }
 }
 
 

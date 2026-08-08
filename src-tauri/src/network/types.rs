@@ -1,5 +1,7 @@
 use serde::{Serialize, Deserialize};
 
+use super::dns::DnsResult;
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct NetworkResult {
 
@@ -22,6 +24,8 @@ pub struct NetworkResult {
     pub max_latency: Option<f64>,
 
     pub average_latency: Option<f64>,
+
+    pub dns: Option<DnsResult>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
