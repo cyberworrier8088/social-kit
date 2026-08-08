@@ -1,5 +1,5 @@
 pub mod manager;
-// pub mod ping;
+pub mod ping;
 pub mod resolver;
 pub mod types;
 
@@ -8,10 +8,10 @@ use manager::analyze;
 use types::*;
 
 #[tauri::command]
-pub fn analyze_network(
+pub async fn analyze_network(
     request: NetworkRequest,
-) -> NetworkResult { 
+) -> Result<NetworkResult, String> { 
     
-    analyze(request)
+    Ok(analyze(request).await)
 
 }

@@ -41,6 +41,19 @@ async function analyzeTarget() {
         ipStatus.setAttribute("data-state", "not-found");
     }
 
+    const pingValue = document.getElementById("ping-value");
+    const pingStatus = document.getElementById("ping-status");
+
+    if (result.online) {
+        pingValue.textContent = "Online";
+        pingStatus.textContent = "Success";
+        pingStatus.setAttribute("data-state", "found");
+    } else {
+        pingValue.textContent = "Offline";
+        pingStatus.textContent = "Failed";
+        pingStatus.setAttribute("data-state", "not-found");
+    }
+
 
 }
 

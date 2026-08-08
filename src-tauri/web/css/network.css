@@ -61,16 +61,16 @@
     color: white;
 }
 
-#ip-status {
+#ip-status, #ping-status {
     color: #8b949e;
     margin-bottom: 10px;
 }
 
 
-#ip-status[data-state="found"] {
+#ip-status[data-state="found"], #ping-status[data-state="found"] {
     color: #238636;
 }
 
-#ip-status[data-state="not-found"] {
+#ip-status[data-state="not-found"], #ping-status[data-state="not-found"] {
     color: #db2828;
 }
