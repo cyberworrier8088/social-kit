@@ -48,3 +48,28 @@
     font-size: 15px;
 
 }
+
+
+
+.network-card {
+
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+#ip-status {
+    color: #8b949e;
+    margin-bottom: 10px;
+}
+
+#ip-status[data-state="found"] {
+    color: #238636;
+}
+
+#ip-status[data-state="not-found"] {
+    color: #db2828;
+}

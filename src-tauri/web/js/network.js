@@ -24,9 +24,20 @@ async function analyzeTarget() {
 
     console.log(result);
 
-    alert(
-        "IP Address: " + (result.ip || "Not Found")
-    );
+
+    const ipValue = document.getElementById("ip-value");
+
+    const ipStatus = document.getElementById("ip-status");
+
+    if (result.ip) {
+
+        ipValue.textContent = result.ip;
+        ipStatus.textContent = "Found";
+    } else {
+
+        ipValue.textContent = "-";
+        ipStatus.textContent = "Not Found";
+    }
 
 
 }
