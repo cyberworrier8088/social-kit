@@ -55,6 +55,28 @@ async function analyzeTarget() {
     }
 
 
+    const pingPackets = document.getElementById("ping-packets");
+
+    const pingLoss = document.getElementById("ping-loss");
+
+    const pingMin = document.getElementById("ping-min");
+
+    const pingAverage = document.getElementById("ping-average");
+
+    const pingMax = document.getElementById("ping-max");
+
+    pingPackets.textContent = result.packets_received + " / " + result.packets_sent;
+
+    pingLoss.textContent = result.packet_loss.toFixed(1) + "%";
+
+    pingMin.textContent = result.min_latency !== null ? result.min_latency.toFixed(2) + " ms" : "-";
+
+    pingAverage.textContent = result.average_latency !== null ? result.average_latency.toFixed(2) + " ms" : "-";
+
+    pingMax.textContent = result.max_latency !== null ? result.max_latency.toFixed(2) + " ms" : "-";
+
+
+
 }
 
 document.addEventListener(

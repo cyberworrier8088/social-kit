@@ -61,16 +61,40 @@
     color: white;
 }
 
-#ip-status, #ping-status {
+#ip-status,
+#ping-status {
     color: #8b949e;
     margin-bottom: 10px;
 }
 
 
-#ip-status[data-state="found"], #ping-status[data-state="found"] {
+#ip-status[data-state="found"],
+#ping-status[data-state="found"] {
     color: #238636;
 }
 
-#ip-status[data-state="not-found"], #ping-status[data-state="not-found"] {
+#ip-status[data-state="not-found"],
+#ping-status[data-state="not-found"] {
     color: #db2828;
+}
+
+
+
+.ping-row {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #30363d;
+}
+
+.ping-row:last-child {
+
+    border-bottom: none;
+}
+
+.ping-row strong {
+
+    font-family: monospace;
+
 }
