@@ -1,0 +1,50 @@
+.search-card {
+    background: #161b22;
+
+    border: 1px solid #30363d;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.search-card input {
+
+    width: #161b22;
+    padding: 14px;
+    border-radius: 8px;
+
+    border: 1px solid #30363d;
+
+    background: #0d1117;
+    color: white;
+
+    margin: 20px 0;
+
+    font-size: 16px;
+}
+
+.buttons {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.buttons button {
+
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    background: #238636;
+    color: white;
+
+    font-size: 15px;
+
+}

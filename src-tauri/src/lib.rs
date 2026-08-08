@@ -2,6 +2,7 @@ use tauri::Manager;
 mod system;
 mod scanner;
 mod osint;
+mod network;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -28,6 +29,7 @@ pub fn run() {
       osint::search_git,
       osint::search_riddit,
       osint::search_all_command,
+      network::analyze_network,
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

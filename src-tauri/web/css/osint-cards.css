@@ -17,8 +17,14 @@
     margin-bottom: 20px;
 }
 
-.platform-header h2 { margin: 0; }
-[id$="-status"] { color: #9ca3af; font-size: 14px; }
+.platform-header h2 {
+    margin: 0;
+}
+
+[id$="-status"] {
+    color: #9ca3af;
+    font-size: 14px;
+}
 
 .platform-body {
     display: flex;
@@ -36,9 +42,23 @@
     background: #21262d;
 }
 
-[id$="-name"] { margin: 5px 0; font-size: 24px; }
-[id$="-username"] { color: #9ca3af; margin-bottom: 15px; font-weight: 500; }
-[id$="-bio"] { margin-bottom: 20px; color: #d1d5db; max-width: 90%; line-height: 1.4; }
+[id$="-name"] {
+    margin: 5px 0;
+    font-size: 24px;
+}
+
+[id$="-username"] {
+    color: #9ca3af;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+[id$="-bio"] {
+    margin-bottom: 20px;
+    color: #d1d5db;
+    max-width: 90%;
+    line-height: 1.4;
+}
 
 .stats {
     display: grid;
@@ -57,8 +77,17 @@
     border: 1px solid #30363d;
 }
 
-.stats strong { font-size: 24px; margin-bottom: 5px; }
-.stats span { color: #9ca3af; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+.stats strong {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.stats span {
+    color: #9ca3af;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
 .info {
     width: 100%;
@@ -69,9 +98,22 @@
     border: 1px solid #30363d;
     margin-bottom: 25px;
 }
-.info p { margin: 10px 0; color: #9ca3af; }
-.info strong { color: white; margin-right: 10px; display: inline-block; width: 80px; }
-.info span { color: #e5e7eb; }
+
+.info p {
+    margin: 10px 0;
+    color: #9ca3af;
+}
+
+.info strong {
+    color: white;
+    margin-right: 10px;
+    display: inline-block;
+    width: 80px;
+}
+
+.info span {
+    color: #e5e7eb;
+}
 
 [id$="-profile"] {
     display: inline-block;
@@ -86,35 +128,105 @@
     box-sizing: border-box;
 }
 
-/* --- GitHub Specific Styles --- */
-#github-avatar { border: 2px solid #3fb950; box-shadow: 0 0 20px rgba(63, 185, 80, 0.25); }
-#github-card .stats strong { color: #3fb950; }
-#github-profile { background: #238636; }
-#github-profile:hover { background: #2ea043; }
 
-/* --- GitLab Specific Styles --- */
-#gitlab-avatar { border: 2px solid #e24329; box-shadow: 0 0 20px rgba(226, 67, 41, 0.25); }
-#gitlab-card .stats strong { color: #e24329; }
-#gitlab-profile { background: #e24329; }
-#gitlab-profile:hover { background: #fc6d26; }
+#github-avatar {
+    border: 2px solid #3fb950;
+    box-shadow: 0 0 20px rgba(63, 185, 80, 0.25);
+}
 
-/* --- Reddit Specific Styles --- */
-#reddit-avatar { border: 2px solid #ff4500; background-color: white; }
-#reddit-profile { background: #ff4500; margin-top: 15px; }
-#reddit-profile:hover { background: #ff5722; }
-#reddit-karma { color: #9ca3af; margin-bottom: 20px; font-size: 18px; }
+#github-card .stats strong {
+    color: #3fb950;
+}
 
-/* --- Instagram Specific Styles --- */
+#github-profile {
+    background: #238636;
+}
+
+#github-profile:hover {
+    background: #2ea043;
+}
+
+
+#gitlab-avatar {
+    border: 2px solid #e24329;
+    box-shadow: 0 0 20px rgba(226, 67, 41, 0.25);
+}
+
+#gitlab-card .stats strong {
+    color: #e24329;
+}
+
+#gitlab-profile {
+    background: #e24329;
+}
+
+#gitlab-profile:hover {
+    background: #fc6d26;
+}
+
+
+
+#reddit-avatar {
+    border: 2px solid #ff4500;
+    background-color: white;
+}
+
+#reddit-profile {
+    background: #ff4500;
+    margin-top: 15px;
+}
+
+#reddit-profile:hover {
+    background: #ff5722;
+}
+
+#reddit-karma {
+    color: #9ca3af;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* --- instagram spacificcc --- */
 #instagram-card {
     border: 2px solid transparent;
-    background-image: linear-gradient(#161b22, #161b22), 
-                      linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background-image: linear-gradient(#161b22, #161b22),
+        linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     background-origin: border-box;
     background-clip: padding-box, border-box;
 }
-#instagram-avatar { border: 3px solid #dc2743; padding: 3px; }
-#instagram-profile { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius: 8px; }
-#instagram-profile:hover { opacity: 0.9; }
-#instagram-card .stats { display: flex; justify-content: space-around; background: #0d1117; padding: 15px 10px; border-radius: 12px; margin-bottom: 20px; border: none; }
-#instagram-card .stats div { align-items: center; border: none; background: transparent; padding: 0; }
-#instagram-card .stats strong { color: white; font-size: 1.2rem; }
+
+#instagram-avatar {
+    border: 3px solid #dc2743;
+    padding: 3px;
+}
+
+#instagram-profile {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-radius: 8px;
+}
+
+#instagram-profile:hover {
+    opacity: 0.9;
+}
+
+#instagram-card .stats {
+    display: flex;
+    justify-content: space-around;
+    background: #0d1117;
+    padding: 15px 10px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: none;
+}
+
+#instagram-card .stats div {
+    align-items: center;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+#instagram-card .stats strong {
+    color: white;
+    font-size: 1.2rem;
+}
