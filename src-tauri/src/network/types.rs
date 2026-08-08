@@ -2,6 +2,23 @@ use serde::{Serialize, Deserialize};
 
 use super::dns::DnsResult;
 
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SslResult {
+
+    pub status: String,
+
+    pub subject: String,
+
+    pub issuer: String,
+
+    pub valid_from: String,
+
+    pub tls_version: String,
+
+    pub expires: String,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct NetworkResult {
 
@@ -26,6 +43,8 @@ pub struct NetworkResult {
     pub average_latency: Option<f64>,
 
     pub dns: Option<DnsResult>,
+
+    pub ssl: Option<SslResult>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

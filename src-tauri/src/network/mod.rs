@@ -2,6 +2,7 @@ pub mod manager;
 pub mod ping;
 pub mod resolver;
 pub mod dns;
+pub mod ssl;
 pub mod types;
 
 
