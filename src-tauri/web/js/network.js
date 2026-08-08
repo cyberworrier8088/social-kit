@@ -24,6 +24,10 @@ async function analyzeTarget() {
 
     console.log(result);
 
+    alert(
+        "IP Address: " + (result.ip || "Not Found")
+    );
+
 
 }
 

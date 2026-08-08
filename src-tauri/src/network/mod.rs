@@ -1,6 +1,6 @@
 pub mod manager;
 // pub mod ping;
-// pub mod resolver;
+pub mod resolver;
 pub mod types;
 
 
