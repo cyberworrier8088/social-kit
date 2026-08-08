@@ -33,10 +33,12 @@ async function analyzeTarget() {
 
         ipValue.textContent = result.ip;
         ipStatus.textContent = "Found";
+        ipStatus.setAttribute("data-state", "found");
     } else {
 
         ipValue.textContent = "-";
         ipStatus.textContent = "Not Found";
+        ipStatus.setAttribute("data-state", "not-found");
     }
 
 
