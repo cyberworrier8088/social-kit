@@ -35,7 +35,7 @@ async function analyzeTarget() {
     if (result.ip) {
 
         ipValue.textContent = result.ip;
-        ipStatus.textContent = "Found";
+        ipStatus.textContent = "found";
         ipStatus.setAttribute("data-state", "found");
     } else {
 
@@ -118,7 +118,7 @@ async function analyzeTarget() {
 
         sslStatus.setAttribute(
             "data-state",
-            "Found"
+            "found"
         );
 
         document.getElementById("ssl-subject").textContent = result.ssl.subject;
@@ -142,6 +142,74 @@ async function analyzeTarget() {
 }
 
 
+async function livePing() {
+
+    const target = document.getElementById("target").value.trim();
+
+    if (target === "") {
+        return;
+    }
+
+    try {
+
+        const result = await invoke(
+            "ping_network",
+            {
+                target
+            }
+        );
+
+        console.log("Live ping: ", result);
+
+        const pingValue = document.getElementById("ping-value");
+
+        const pingStatus = document.getElementById("ping-status");
+
+        if (result.online) {
+
+            pingValue.textContent = "online";
+
+            pingStatus.textContent = "Success";
+
+            pingStatus.setAttribute(
+                "data-state",
+                "found"
+            );
+
+
+        } else {
+
+            pingValue.textContent = "Offline";
+
+            pingStatus.textContent = "Failed";
+
+            pingStatus.setAttribute(
+                "data-state",
+                "not-found"
+            );
+
+
+        }
+
+        document.getElementById("ping-packets").textContent = result.packets_received + " / " + result.packets_sent;
+
+        document.getElementById("ping-loss").textContent = result.packet_loss.toFixed(1) + "%";
+
+        document.getElementById("ping-min").textContent = result.min_latency !== null ? result.min_latency.toFixed(2) + " ms" : "-";
+
+        document.getElementById("ping-average").textContent = result.average_latency !== null ? result.average_latency.toFixed(2) + " ms" : "-";
+
+        document.getElementById("ping-max").textContent = result.max_latency !== null ? result.max_latency.toFixed(2) + " ms" : "-";
+    } catch (error) {
+
+        console.error(
+            "Live ping failed:",
+            error
+        );
+    }
+}
+
+
 async function startMonitoring() {
 
     if (monitoring) {
@@ -157,16 +225,19 @@ async function startMonitoring() {
 
     while (monitoring) {
 
-        await analyzeTarget();
+        await livePing();
 
         updateLiveStatus();
 
-
         if (!monitoring) {
+
             break;
+
         }
 
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(
+            resolve => setTimeout(resolve, 2000)
+        );
     }
 
 }
