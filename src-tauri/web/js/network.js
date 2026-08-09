@@ -108,6 +108,37 @@ async function analyzeTarget() {
         dnsStatus.textContent = "No DNS Data";
         dnsStatus.setAttribute("data-state", "not-found");
     }
+
+
+    const sslStatus = document.getElementById("ssl-status");
+
+    if (result.ssl) {
+
+        sslStatus.textContent = result.ssl.status;
+
+        sslStatus.setAttribute(
+            "data-state",
+            "Found"
+        );
+
+        document.getElementById("ssl-subject").textContent = result.ssl.subject;
+
+        document.getElementById("ssl-issuer").textContent = result.ssl.issuer;
+
+        document.getElementById("ssl-valid-from").textContent = result.ssl.valid_from;
+
+        document.getElementById("ssl-expires").textContent = result.ssl.expires;
+
+        document.getElementById("ssl-version").textContent = result.ssl.tls_version;
+    } else {
+
+        sslStatus.textContent = "No SSL data";
+
+        sslStatus.setAttribute(
+            "data-state",
+            "not-found"
+        );
+    }
 }
 
 

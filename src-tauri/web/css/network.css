@@ -128,3 +128,27 @@
     font-family: monospace;
 
 }
+
+#dns-status,
+#ssl-status {
+    margin-bottom: 10px;
+}
+
+#dns-status[data-state="found"],
+#ssl-status[data-state="found"] {
+    color: #238636;
+}
+
+#dns-status[data-state="not-found"],
+#ssl-status[data-state="not-found"] {
+    color: #db2828;
+}
+
+#ssl-subject,
+#ssl-issuer,
+#ssl-valid-from,
+#ssl-expires,
+#ssl-version {
+    font-family: monospace;
+    color: #8b949e;
+}
