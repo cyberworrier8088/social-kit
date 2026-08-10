@@ -178,6 +178,58 @@ async function analyzeTarget() {
         );
 
     }
+
+
+
+
+    /// web fiesssss like robots.txt and sitemap.xml :D
+
+
+    const webFiles = result.web_files;
+
+    if (webFiles) {
+
+        const robotsStatus = document.getElementById("robots-status");
+        const robotsUrl = document.getElementById("robots-url");
+
+        if (webFiles.robots_found) {
+
+            robotsStatus.textContent = "Foundddddddd";
+            robotsStatus.textContent = "found";
+
+            robotsUrl.textContent = webFiles.robots_url || "";
+
+        } else {
+
+            robotsStatus.textContent = "Nooooooooooooooo found";
+
+            robotsStatus.dataset.state = "not-found";
+
+            robotsUrl.textContent = "";
+        }
+
+
+        const sitemapStatus = document.getElementById("sitemap-status");
+
+        const sitemapUrl = document.getElementById("sitemap-url");
+
+
+        if (webFiles.sitemap_found) {
+
+            sitemapStatus.textContent = "Foundddddddder";
+
+            sitemapStatus.dataset.state = "found";
+
+            sitemapUrl.textContent = webFiles.sitemap_url || "";
+        } else {
+
+            sitemapStatus.textContent = "✗ Not found";
+            sitemapStatus.dataset.state = "not-found";
+
+
+            sitemapUrl.textContent = "";
+        }
+    }
 }
 
 

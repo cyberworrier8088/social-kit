@@ -6,6 +6,9 @@ pub fn resolve_target(
     target: &str,
 ) -> Result<IpAddr, String> {
 
+
+    let target = target.trim().trim_start_matches("https://").trim_start_matches("http://").trim_end_matches('/');
+
     println!("Resolving Target: {}", target);
 
     if let Ok(ip) = target.parse::<IpAddr>() {

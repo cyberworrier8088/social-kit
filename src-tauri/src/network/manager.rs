@@ -5,6 +5,11 @@ use super::ssl::check_ssl;
 use super::headers::check_headers;
 use super::types::*;
 
+
+
+use super::web_files::check_web_files;
+
+
 pub async fn analyze(
    request: NetworkRequest,
 ) -> NetworkResult {
@@ -46,6 +51,8 @@ pub async fn analyze(
             ssl: None,
 
             security_headers: None,
+
+            web_files: None,
          };
       }
    };
@@ -55,6 +62,8 @@ pub async fn analyze(
    let ssl = check_ssl(&request.target).ok();
 
    let security_headers = check_headers(&request.target).await.ok();
+
+   let web_files = check_web_files(&request.target).await.ok();
 
    let stats = match ping_target(ip).await {
 
@@ -91,6 +100,8 @@ pub async fn analyze(
             ssl: None,
 
             security_headers: None,
+
+            web_files: None,
          };
       }
    };
@@ -123,5 +134,7 @@ pub async fn analyze(
       ssl,
 
       security_headers,
+
+      web_files,
    }
 }
