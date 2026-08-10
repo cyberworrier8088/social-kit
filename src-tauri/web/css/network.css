@@ -61,6 +61,10 @@
     color: white;
 }
 
+#ping-status[data-state="warning"] {
+    color: #d29922;
+}
+
 #ip-status,
 #ping-status {
     color: #8b949e;

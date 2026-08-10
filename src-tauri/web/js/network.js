@@ -48,13 +48,26 @@ async function analyzeTarget() {
     const pingStatus = document.getElementById("ping-status");
 
     if (result.online) {
+
         pingValue.textContent = "Online";
-        pingStatus.textContent = "Success";
-        pingStatus.setAttribute("data-state", "found");
+
+        pingStatus.textContent = "ICMP reachable";
+
+
+        pingStatus.setAttribute(
+            "data-state",
+            "found"
+        );
     } else {
-        pingValue.textContent = "Offline";
-        pingStatus.textContent = "Failed";
-        pingStatus.setAttribute("data-state", "not-found");
+
+        pingValue.textContent = "ICMP blocked / timeout";
+
+        pingStatus.textContent = "Host resolved";
+
+        pingStatus.setAttribute(
+            "data-state",
+            "warning"
+        );
     }
 
 
@@ -258,28 +271,29 @@ async function livePing() {
 
         if (result.online) {
 
-            pingValue.textContent = "online";
+            pingValue.textContent =
+                "Online";
 
-            pingStatus.textContent = "Success";
+            pingStatus.textContent =
+                "ICMP reachable";
 
             pingStatus.setAttribute(
                 "data-state",
                 "found"
             );
 
-
         } else {
 
-            pingValue.textContent = "Offline";
+            pingValue.textContent =
+                "ICMP blocked / timeout";
 
-            pingStatus.textContent = "Failed";
+            pingStatus.textContent =
+                "Host resolved";
 
             pingStatus.setAttribute(
                 "data-state",
-                "not-found"
+                "warning"
             );
-
-
         }
 
         document.getElementById("ping-packets").textContent = result.packets_received + " / " + result.packets_sent;
