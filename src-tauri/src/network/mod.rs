@@ -3,6 +3,7 @@ pub mod ping;
 pub mod resolver;
 pub mod dns;
 pub mod ssl;
+pub mod headers;
 pub mod types;
 
 
@@ -58,6 +59,9 @@ pub async fn ping_network(
         dns: None,
 
         ssl: None,
+
+
+        security_headers: None,
         
     })
 

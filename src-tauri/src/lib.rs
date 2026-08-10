@@ -30,6 +30,7 @@ pub fn run() {
       osint::search_riddit,
       osint::search_all_command,
       network::analyze_network,
+      network::ping_network,
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

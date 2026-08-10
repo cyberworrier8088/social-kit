@@ -1,6 +1,7 @@
 use serde::{Serialize, Deserialize};
 
 use super::dns::DnsResult;
+use super::headers::SecurityHeaders;
 
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -45,6 +46,8 @@ pub struct NetworkResult {
     pub dns: Option<DnsResult>,
 
     pub ssl: Option<SslResult>,
+
+    pub security_headers: Option<SecurityHeaders>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

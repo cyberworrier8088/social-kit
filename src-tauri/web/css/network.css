@@ -152,3 +152,57 @@
     font-family: monospace;
     color: #8b949e;
 }
+
+
+/* securty header css */
+
+.security-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #30363d;
+
+
+}
+
+
+.security-row:last-child {
+
+    border-bottom: none;
+
+}
+
+.security-row span {
+
+    color: #8b949e;
+
+
+}
+
+.security-row strong {
+
+    font-family: monospace;
+
+    white-space: nowrap;
+
+}
+
+.security-row strong[data-state="found"] {
+
+    color: #3fb950;
+
+}
+
+.security-row strong[data-state="not-found"] {
+
+    color: #f85149;
+
+}

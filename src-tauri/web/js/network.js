@@ -139,6 +139,45 @@ async function analyzeTarget() {
             "not-found"
         );
     }
+
+
+    // securty headerssss :0
+    const securityHeaders = result.security_headers;
+
+    if (securityHeaders) {
+
+        setSecurityHeader(
+            "header-hsts",
+            securityHeaders.hsts
+        );
+
+
+        setSecurityHeader(
+            "header-csp",
+            securityHeaders.csp
+        );
+
+        setSecurityHeader(
+            'header-frame',
+            securityHeaders.x_frame_options
+        );
+
+        setSecurityHeader(
+            "header-content-type",
+            securityHeaders.x_content_type_options
+        );
+
+        setSecurityHeader(
+            "header-referrer",
+            securityHeaders.referrer_policy
+        );
+
+        setSecurityHeader(
+            "header-permissions",
+            securityHeaders.permissions_policy
+        );
+
+    }
 }
 
 
@@ -223,6 +262,8 @@ async function startMonitoring() {
     document.getElementById("analyze-btn").disabled = true;
     document.getElementById("stop-btn").disabled = false;
 
+    await analyzeTarget();
+
     while (monitoring) {
 
         await livePing();
@@ -298,3 +339,37 @@ document.addEventListener(
         }
     }
 );
+
+
+/// update securty header function
+function setSecurityHeader(
+    elementId,
+    value
+) {
+
+    const element = document.getElementById(elementId);
+
+
+    if (!element) {
+
+        return;
+
+    }
+
+
+    if (value) {
+
+        element.textContent = "Pressent"
+
+        element.title = value;
+
+        element.dataset.state = "found";
+    } else {
+
+        element.textContent = "Missing"
+
+        element.title = ""
+
+        element.dataset.state = "not-found";
+    }
+}

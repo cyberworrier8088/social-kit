@@ -2,6 +2,7 @@ use super::ping::ping_target;
 use super::resolver::resolve_target;
 use super::dns::lookup_dns;
 use super::ssl::check_ssl;
+use super::headers::check_headers;
 use super::types::*;
 
 pub async fn analyze(
@@ -43,6 +44,8 @@ pub async fn analyze(
             dns: None,
 
             ssl: None,
+
+            security_headers: None,
          };
       }
    };
@@ -50,6 +53,8 @@ pub async fn analyze(
    let dns = lookup_dns(&request.target).await.ok();
 
    let ssl = check_ssl(&request.target).ok();
+
+   let security_headers = check_headers(&request.target).await.ok();
 
    let stats = match ping_target(ip).await {
 
@@ -84,6 +89,8 @@ pub async fn analyze(
             dns: None,
 
             ssl: None,
+
+            security_headers: None,
          };
       }
    };
@@ -114,5 +121,7 @@ pub async fn analyze(
       dns,
 
       ssl,
+
+      security_headers,
    }
 }
