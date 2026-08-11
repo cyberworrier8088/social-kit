@@ -268,6 +268,24 @@ async function analyzeTarget() {
         document.getElementById("geo-organization").textContent = geo.organization || "-";
 
     }
+
+
+    // hosting detailsss css
+
+    const hosting = result.hosting;
+
+    if (hosting) {
+
+        document.getElementById("hosting-ip").textContent = hosting.ip || "-";
+
+        document.getElementById("hosting-isp").textContent = hosting.isp || "-";
+
+        document.getElementById("hosting-organization").textContent = hosting.organization || "-";
+
+        document.getElementById("hosting-asn").textContent = hosting.asn || "-";
+
+        document.getElementById("hosting-as-name").textContent = hosting.as_name || "-";
+    }
 }
 
 

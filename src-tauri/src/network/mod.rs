@@ -6,6 +6,7 @@ pub mod ssl;
 pub mod headers;
 pub mod web_files;
 pub mod geo;
+pub mod hosting;
 pub mod types;
 
 
@@ -71,6 +72,8 @@ pub async fn ping_network(
 
 
         geo: None,
+
+        hosting: None,
         
     })
 

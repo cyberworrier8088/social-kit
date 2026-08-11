@@ -309,3 +309,35 @@
 
     word-break: break-word;
 }
+
+/* hosting css */
+
+.hosting-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 12px 0;
+
+
+    border-bottom: 1px solid #30363d;
+}
+
+.hosting-row:last-child {
+    border-bottom: none;
+}
+
+.hosting-row span {
+
+    color: #8b949e;
+}
+
+.hosting-row strong {
+
+    font-family: monospace;
+    text-align: right;
+    word-break: break-word;
+}

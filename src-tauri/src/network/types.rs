@@ -4,6 +4,7 @@ use super::dns::DnsResult;
 use super::headers::SecurityHeaders;
 use super::web_files::WebFileResult;
 use super::geo::GeoResult;
+use super::hosting::HostingResult;
 
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -54,6 +55,8 @@ pub struct NetworkResult {
     pub web_files: Option<WebFileResult>,
 
     pub geo: Option<GeoResult>,
+
+    pub hosting: Option<HostingResult>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
