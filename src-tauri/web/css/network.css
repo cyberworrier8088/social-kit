@@ -382,3 +382,47 @@
 
     max-width: 65%;
 }
+
+
+/* reverse dns csss */
+
+.reverse-dns-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #30363d;
+}
+
+
+.reverse-dns-row:last-child {
+
+    border-bottom: none;
+
+
+}
+
+.reverse-dns-row span {
+
+    color: #8b949e;
+
+
+}
+
+.reverse-dns-row strong {
+
+    font-family: monospace;
+
+    text-align: right;
+
+    max-width: 70%;
+
+    word-break: break-word;
+}

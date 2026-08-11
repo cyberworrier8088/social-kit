@@ -357,6 +357,21 @@ async function analyzeTarget() {
 
     }
 
+
+    // reverse DNS jssssss
+
+    const reverseDns = result.reverse_dns;
+
+    if (reverseDns) {
+
+        document.getElementById("reverse-dns-ip").textContent = reverseDns.ip || "-";
+
+        const hostnames = reverseDns.hostnames || [];
+
+
+        document.getElementById("reverse-dns-hostnames").textContent = hostnames.length ? hostnames.join(", ") : "No PTR record";
+    }
+
 }
 
 
