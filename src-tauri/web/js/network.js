@@ -243,6 +243,31 @@ async function analyzeTarget() {
             sitemapUrl.textContent = "";
         }
     }
+
+
+    /// geo locationnn
+
+    const geo = result.geo;
+
+    if (geo) {
+
+        document.getElementById("geo-country").textContent = geo.country || "-";
+
+        document.getElementById("geo-region").textContent = geo.region || "-";
+
+        document.getElementById("geo-city").textContent = geo.city || "-";
+
+        document.getElementById("geo-latitude").textContent = geo.latitude || "-";
+
+        document.getElementById("geo-longitude").textContent = geo.longitude || "-";
+
+        document.getElementById("geo-timezone").textContent = geo.timezone || "-";
+
+        document.getElementById("geo-isp").textContent = geo.isp || "-";
+
+        document.getElementById("geo-organization").textContent = geo.organization || "-";
+
+    }
 }
 
 
@@ -327,6 +352,7 @@ async function startMonitoring() {
 
     document.getElementById("analyze-btn").disabled = true;
     document.getElementById("stop-btn").disabled = false;
+    document.getElementById("target").disabled = true;
 
     await analyzeTarget();
 
@@ -356,8 +382,8 @@ function stopMonitoring() {
     updateLiveStatus();
 
     document.getElementById("analyze-btn").disabled = false;
-
     document.getElementById("stop-btn").disabled = true;
+    document.getElementById("target").disabled = false;
 }
 
 

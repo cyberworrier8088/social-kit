@@ -267,3 +267,45 @@
     color: #f85149;
 
 }
+
+
+
+/* geo css */
+
+.geo-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #30363d;
+
+}
+
+
+.geo-row:last-child {
+
+    border-bottom: none;
+
+}
+
+.geo-row span {
+
+    color: #8b949e;
+
+}
+
+.geo-row strong {
+
+    font-family: monospace;
+
+    text-align: right;
+
+    word-break: break-word;
+}

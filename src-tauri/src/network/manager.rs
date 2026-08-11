@@ -8,11 +8,12 @@ use super::types::*;
 
 
 use super::web_files::check_web_files;
-
+use super::geo::lookup_geo;
 
 pub async fn analyze(
-   request: NetworkRequest,
+   mut request: NetworkRequest,
 ) -> NetworkResult {
+   request.target = request.target.trim().trim_start_matches("https://").trim_start_matches("http://").trim_end_matches('/').to_string();
 
    let ip = match resolve_target(
       &request.target
@@ -53,6 +54,8 @@ pub async fn analyze(
             security_headers: None,
 
             web_files: None,
+
+            geo: None,
          };
       }
    };
@@ -64,6 +67,8 @@ pub async fn analyze(
    let security_headers = check_headers(&request.target).await.ok();
 
    let web_files = check_web_files(&request.target).await.ok();
+
+   let geo = lookup_geo(&ip.to_string()).await.ok();
 
    let stats = match ping_target(ip).await {
 
@@ -102,6 +107,8 @@ pub async fn analyze(
             security_headers: None,
 
             web_files: None,
+
+            geo: None,
          };
       }
    };
@@ -136,5 +143,7 @@ pub async fn analyze(
       security_headers,
 
       web_files,
+      
+      geo,
    }
 }

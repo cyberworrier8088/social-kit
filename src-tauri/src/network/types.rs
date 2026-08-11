@@ -3,6 +3,7 @@ use serde::{Serialize, Deserialize};
 use super::dns::DnsResult;
 use super::headers::SecurityHeaders;
 use super::web_files::WebFileResult;
+use super::geo::GeoResult;
 
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -51,6 +52,8 @@ pub struct NetworkResult {
     pub security_headers: Option<SecurityHeaders>,
 
     pub web_files: Option<WebFileResult>,
+
+    pub geo: Option<GeoResult>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

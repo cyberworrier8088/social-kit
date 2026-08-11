@@ -5,6 +5,7 @@ pub mod dns;
 pub mod ssl;
 pub mod headers;
 pub mod web_files;
+pub mod geo;
 pub mod types;
 
 
@@ -24,8 +25,9 @@ pub async fn analyze_network(
 
 #[tauri::command]
 pub async fn ping_network(
-    target: String,
+    mut target: String,
 ) -> Result<NetworkResult, String> {
+    target = target.trim().trim_start_matches("https://").trim_start_matches("http://").trim_end_matches('/').to_string();
 
     let ip = crate::network::resolver::resolve_target(
         &target
@@ -66,6 +68,9 @@ pub async fn ping_network(
 
 
         web_files: None,
+
+
+        geo: None,
         
     })
 
