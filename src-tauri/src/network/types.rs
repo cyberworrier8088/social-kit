@@ -5,6 +5,7 @@ use super::headers::SecurityHeaders;
 use super::web_files::WebFileResult;
 use super::geo::GeoResult;
 use super::hosting::HostingResult;
+use super::whois::WhoisResult;
 
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -57,6 +58,8 @@ pub struct NetworkResult {
     pub geo: Option<GeoResult>,
 
     pub hosting: Option<HostingResult>,
+
+    pub whois: Option<WhoisResult>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

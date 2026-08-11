@@ -10,6 +10,7 @@ use super::types::*;
 use super::web_files::check_web_files;
 use super::geo::lookup_geo;
 use super::hosting::lookup_hosting;
+use super::whois::lookup_whois;
 
 pub async fn analyze(
    mut request: NetworkRequest,
@@ -59,6 +60,8 @@ pub async fn analyze(
             geo: None,
 
             hosting: None,
+
+            whois: None,
          };
       }
    };
@@ -74,6 +77,8 @@ pub async fn analyze(
    let geo = lookup_geo(&ip.to_string()).await.ok();
 
    let hosting = lookup_hosting(&ip.to_string()).await.ok();
+
+   let whois = lookup_whois(&request.target).await.ok();
 
    let stats = match ping_target(ip).await {
 
@@ -116,6 +121,8 @@ pub async fn analyze(
             geo: None,
 
             hosting: None,
+
+            whois: None,
          };
       }
    };
@@ -154,5 +161,7 @@ pub async fn analyze(
       geo,
 
       hosting,
+
+      whois,
    }
 }

@@ -341,3 +341,44 @@
     text-align: right;
     word-break: break-word;
 }
+
+
+/* whois css */
+
+.whois-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #30363d;
+}
+
+.whois-row:last-child {
+
+    border-bottom: none;
+
+}
+
+.whois-row span {
+
+    color: #8b949e;
+
+}
+
+.whois-row strong {
+
+    font-family: monospace;
+
+    text-align: right;
+
+    word-break: break-word;
+
+    max-width: 65%;
+}

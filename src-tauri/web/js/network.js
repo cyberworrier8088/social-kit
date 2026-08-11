@@ -286,6 +286,77 @@ async function analyzeTarget() {
 
         document.getElementById("hosting-as-name").textContent = hosting.as_name || "-";
     }
+
+
+    // Whois/ rdap
+
+    const whois = result.whois;
+
+    if (whois) {
+
+        document.getElementById("whois-registrar").textContent = whois.registrar || "-";
+
+        document.getElementById("whois-creation").textContent = whois.creation_date || "-";
+
+        document.getElementById("whois-updated").textContent = whois.updated_date || "-";
+
+        document.getElementById("whois-expiration").textContent = whois.expiration_date || "-";
+
+        // domain age
+
+        const ageElement = document.getElementById("domain-age");
+
+        if (whois.creation_date) {
+
+            const creation = new Date(whois.creation_date);
+
+            if (!Number.isNaN(creation.getTime())) {
+
+                const now = new Date();
+
+                let years = now.getFullYear() - creation.getFullYear();
+
+                let months = now.getMonth() - creation.getMonth();
+
+                if (now.getDate() < creation.getDate()) {
+
+                    months--;
+                }
+
+                if (months < 0) {
+
+                    years--;
+                    months += 12;
+
+                }
+
+                ageElement.textContent = '${years} years, ${months} months';
+
+            } else {
+
+                ageElement.textContent = "Unable to calculate";
+            }
+        } else {
+
+            ageElement.textContent = "Unavailable";
+        }
+
+
+        // nammeeeservers
+
+        const nameservers = whois.nameservers || [];
+
+        document.getElementById("whois-nameservers").textContent = nameservers.length ? nameservers.join(", ") : "-";
+
+
+        // Domain status
+
+        const statuses = whois.domain_status || [];
+
+        document.getElementById("whois-status").textContent = statuses.length ? statuses.join(", ") : "-";
+
+    }
+
 }
 
 
