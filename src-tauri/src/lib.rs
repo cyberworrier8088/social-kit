@@ -3,6 +3,7 @@ mod system;
 mod scanner;
 mod osint;
 mod network;
+mod phishing;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -31,7 +32,10 @@ pub fn run() {
       osint::search_all_command,
       network::analyze_network,
       network::ping_network,
+      phishing::start_phishing,
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
+
+

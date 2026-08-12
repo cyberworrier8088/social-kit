@@ -426,3 +426,46 @@
 
     word-break: break-word;
 }
+
+
+/* http css */
+
+.http-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #30363d;
+}
+
+
+.http-row:last-child {
+
+    border-bottom: none;
+
+}
+
+.http-row span {
+
+    color: #8b949e;
+
+}
+
+
+.http-row strong {
+
+    font-family: monospace;
+
+    text-align: right;
+
+    max-width: 70%;
+
+    word-break: break-word;
+}

@@ -7,6 +7,7 @@ use super::geo::GeoResult;
 use super::hosting::HostingResult;
 use super::whois::WhoisResult;
 use super::reverse_dns::ReverseDnsResult;
+use super::http_info::HttpInfoResult;
 
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -63,6 +64,8 @@ pub struct NetworkResult {
     pub whois: Option<WhoisResult>,
 
     pub reverse_dns: Option<ReverseDnsResult>,
+
+    pub http_info: Option<HttpInfoResult>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

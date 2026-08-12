@@ -12,6 +12,7 @@ use super::geo::lookup_geo;
 use super::hosting::lookup_hosting;
 use super::whois::lookup_whois;
 use super::reverse_dns::lookup_reverse_dns;
+use super::http_info::check_http_info;
 
 pub async fn analyze(
    mut request: NetworkRequest,
@@ -65,6 +66,8 @@ pub async fn analyze(
             whois: None,
 
             reverse_dns: None,
+
+            http_info: None,
          };
       }
    };
@@ -84,6 +87,8 @@ pub async fn analyze(
    let whois = lookup_whois(&request.target).await.ok();
 
    let reverse_dns = lookup_reverse_dns(&ip.to_string()).await.ok();
+
+   let http_info = check_http_info(&request.target).await.ok();
 
    let stats = match ping_target(ip).await {
 
@@ -130,6 +135,8 @@ pub async fn analyze(
             whois: None,
 
             reverse_dns: None,
+
+            http_info: None,
          };
       }
    };
@@ -172,5 +179,7 @@ pub async fn analyze(
       whois,
 
       reverse_dns,
+      
+      http_info,
    }
 }

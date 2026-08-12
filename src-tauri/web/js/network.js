@@ -372,6 +372,31 @@ async function analyzeTarget() {
         document.getElementById("reverse-dns-hostnames").textContent = hostnames.length ? hostnames.join(", ") : "No PTR record";
     }
 
+
+    // HTTP infoo
+
+    const httpInfo = result.http_info;
+
+    if (httpInfo) {
+
+        document.getElementById("http-status-code").textContent = httpInfo.status_code || "-";
+
+        document.getElementById("http-server").textContent = httpInfo.server || "-";
+
+        document.getElementById("http-powered-by").textContent = httpInfo.powered_by || "-";
+
+        document.getElementById("http-content-type").textContent = httpInfo.content_type || "-";
+
+        document.getElementById("http-content-length").textContent = httpInfo.content_length || "-";
+
+        document.getElementById("http-final-url").textContent = httpInfo.final_url || "-";
+
+        const technologies = httpInfo.technologies || [];
+
+        document.getElementById("http-technologies").textContent = technologies.length ? technologies.join(", ") : "None detected";
+
+    }
+
 }
 
 

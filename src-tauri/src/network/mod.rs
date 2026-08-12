@@ -9,6 +9,7 @@ pub mod geo;
 pub mod hosting;
 pub mod whois;
 pub mod reverse_dns;
+pub mod http_info;
 pub mod types;
 
 
@@ -80,6 +81,8 @@ pub async fn ping_network(
         whois: None,
 
         reverse_dns: None,
+
+        http_info: None,
         
     })
 
