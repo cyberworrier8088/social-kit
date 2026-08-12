@@ -75,7 +75,7 @@ async function startScan() {
 
                 if (result.open) {
                     openPorts.push(port);
-                    addResult(port, "Open", "Unknown");
+                    addResult(port, "Open", result.service || "Unknown");
                     console.log(`Port ${port} is OPEN!`);
                 }
             } catch (error) {

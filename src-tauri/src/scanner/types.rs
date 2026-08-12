@@ -12,4 +12,5 @@ pub struct ScanResult {
     pub target: String,
     pub port: u16,
     pub open: bool,
+    pub service: Option<String>,
 }
