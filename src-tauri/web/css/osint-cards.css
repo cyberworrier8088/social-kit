@@ -230,3 +230,26 @@
     color: white;
     font-size: 1.2rem;
 }
+
+
+
+/* Mastodon card css */
+#mastodon-avatar {
+
+    border: 2px solid #6364ff;
+    box-shadow: 0 0 20px rgba(99, 100, 255, 0.25);
+
+}
+
+#mastodon-card .stats strong {
+    color: #6364ff;
+
+}
+
+#mastodon-profile {
+    background: #6364ff;
+}
+
+#mastodon-profile:hover {
+    background: #7c7dff;
+}

@@ -103,10 +103,16 @@ async function searchUsername() {
         const ghProgress = document.getElementById("github-progress");
         const rdProgress = document.getElementById("reddit-progress");
         const igProgress = document.getElementById("instagram-progress");
+        const glProgress = document.getElementById("gitlab-progress");
+        const mtProgress = document.getElementById("mastodon-progress");
+
 
         if (ghProgress) ghProgress.textContent = "Github: Searching...";
         if (rdProgress) rdProgress.textContent = "Reddit: Searching...";
         if (igProgress) igProgress.textContent = "Instagram: Searching...";
+        if (glProgress) glProgress.textContent = "Gitlab: Searching...";
+        if (mtProgress) mtProgress.textContent = "Mastodon: Searching...";
+        
         const results = await invoke(
             "search_all_command",
             {
@@ -121,6 +127,8 @@ async function searchUsername() {
         if (ghProgress) ghProgress.textContent = results.github ? "Github: Found!" : "Github: Not Found";
         if (rdProgress) rdProgress.textContent = results.reddit ? "Reddit: Found!" : "Reddit: Not Found";
         if (igProgress) igProgress.textContent = results.instagram ? "Instagram: Found!" : "Instagram: Not Found";
+        if (glProgress) glProgress.textContent = results.gitlab ? "Gitlab: Found!" : "Gitlab: Not Found";
+        if (mtProgress) mtProgress.textContent = results.mastodon ? "Mastodon: Found!" : "Mastodon: Not Found";
 
         if (results.github) {
 
@@ -141,6 +149,11 @@ async function searchUsername() {
         if (results.gitlab) {
 
             updateGitLabCard(results.gitlab);
+        }
+
+        if (results.mastodon) {
+
+            updateMastodonCard(results.mastodon);
         }
     }
 
@@ -227,3 +240,17 @@ function updateGitLabCard(profile) {
     document.getElementById("gitlab-profile").href = profile.web_url;
 }
 
+function updateMastodonCard(profile) {
+
+    document.getElementById("mastodon-status").textContent = "Foundd";
+    document.getElementById("mastodon-avatar").src = profile.avatar_url;
+    document.getElementById("mastodon-name").textContent = profile.display_name || "-";
+    document.getElementById("mastodon-username").textContent = "@" + profile.username;
+    document.getElementById("mastodon-bio").textContent = profile.bio || "Noo BIooooo";
+    document.getElementById("mastodon-followers").textContent = profile.followers_count;
+    document.getElementById("mastodon-following").textContent = profile.following_count;
+    document.getElementById("mastodon-posts").textContent = profile.statuses_count;
+    document.getElementById("mastodon-profile").href = profile.profile_url;
+}
+
+// end

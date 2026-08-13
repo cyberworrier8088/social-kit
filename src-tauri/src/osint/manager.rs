@@ -8,6 +8,7 @@ use super::{
     reddit::search_riddit,
     instagram::search_instagram,
     gitlab::search_gitlab,
+    mastodon::{search_mastodon, MastodonProfile},
     types::{
         GithubProfile,
         RedditProfile,
@@ -29,6 +30,8 @@ pub struct SearchResults {
     pub instagram: Option<InstagramProfile>,
 
     pub gitlab: Option<GitLabProfile>,
+
+    pub mastodon: Option<MastodonProfile>,
 }
 
 pub fn search_all(
@@ -61,6 +64,14 @@ pub fn search_all(
         }
     });
 
+    let mastodon_thread = thread::spawn({
+
+        let username = username.clone();
+        move || {
+            search_mastodon(&username).ok()
+        }
+    });
+
 
 
     let github = github_thread.join().unwrap();
@@ -71,6 +82,8 @@ pub fn search_all(
 
     let gitlab = search_gitlab(&request.username).ok();
 
+    let mastodon = mastodon_thread.join().unwrap();
+
     SearchResults {
 
         github,
@@ -80,5 +93,7 @@ pub fn search_all(
         gitlab,
         
         instagram,
+
+        mastodon,
     }
 }

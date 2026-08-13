@@ -31,6 +31,7 @@ loadComponent("instagram-card-container", "components/instagram-card.html");
 loadComponent("search-progress", "components/search-progress.html");
 loadComponent("gitlab-card-container", "components/gitlab-card.html");
 loadComponent("network-search", "components/network-search.html");
+loadComponent("mastodon-card-container", "components/mastodon-card.html");
 
 loadStatusCard("cpu-card", "CPU", "Processor Utilization");
 loadStatusCard("memory-card", "Memory", "System RAM Usage");
