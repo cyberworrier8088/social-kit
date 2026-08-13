@@ -93,4 +93,3 @@ pub struct GitLabProfile {
     pub following: u32,
 }
 
-

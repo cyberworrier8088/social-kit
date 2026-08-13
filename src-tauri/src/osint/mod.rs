@@ -4,6 +4,7 @@ pub mod reddit;
 pub mod instagram;
 pub mod gitlab;
 pub mod mastodon;
+pub mod keybase;
 pub mod manager;
 
 
@@ -45,6 +46,13 @@ pub fn search_mastodon_command(
 ) -> Result<mastodon::MastodonProfile, String> {
 
     mastodon::search_mastodon(&username)
+}
+
+#[tauri::command]
+pub fn search_keybase_command(
+    username: String,
+) -> Result<keybase::KeybaseProfile, String> {
+    keybase::search_keybase(&username)
 }
 
 

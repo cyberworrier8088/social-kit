@@ -253,3 +253,22 @@
 #mastodon-profile:hover {
     background: #7c7dff;
 }
+
+/* keybase css */
+
+#keybase-avatar {
+    border: 2px solid #0066cc;
+    box-shadow: 0 0 20px rgba(0, 102, 204, 0.25);
+}
+
+#keybase-card .stats strong {
+    color: #0066cc;
+}
+
+#keybase-profile {
+    background: #0066cc;
+}
+
+#keybase-profile:hover {
+    background: #0052a3;
+}

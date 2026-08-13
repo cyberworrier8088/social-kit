@@ -105,6 +105,7 @@ async function searchUsername() {
         const igProgress = document.getElementById("instagram-progress");
         const glProgress = document.getElementById("gitlab-progress");
         const mtProgress = document.getElementById("mastodon-progress");
+        const kbProgress = document.getElementById("keybase-progress");
 
 
         if (ghProgress) ghProgress.textContent = "Github: Searching...";
@@ -112,7 +113,8 @@ async function searchUsername() {
         if (igProgress) igProgress.textContent = "Instagram: Searching...";
         if (glProgress) glProgress.textContent = "Gitlab: Searching...";
         if (mtProgress) mtProgress.textContent = "Mastodon: Searching...";
-        
+        if (kbProgress) kbProgress.textContent = "keybase: Searchinnggggg.."
+
         const results = await invoke(
             "search_all_command",
             {
@@ -129,6 +131,7 @@ async function searchUsername() {
         if (igProgress) igProgress.textContent = results.instagram ? "Instagram: Found!" : "Instagram: Not Found";
         if (glProgress) glProgress.textContent = results.gitlab ? "Gitlab: Found!" : "Gitlab: Not Found";
         if (mtProgress) mtProgress.textContent = results.mastodon ? "Mastodon: Found!" : "Mastodon: Not Found";
+        if (kbProgress) kbProgress.textContent = results.keybase ? "Keybase: Found!!!!!!!" : "Keybase: Not Found";
 
         if (results.github) {
 
@@ -154,6 +157,11 @@ async function searchUsername() {
         if (results.mastodon) {
 
             updateMastodonCard(results.mastodon);
+        }
+
+        if (results.keybase) {
+
+            updateKeybaseCard(results.keybase);
         }
     }
 
@@ -251,6 +259,28 @@ function updateMastodonCard(profile) {
     document.getElementById("mastodon-following").textContent = profile.following_count;
     document.getElementById("mastodon-posts").textContent = profile.statuses_count;
     document.getElementById("mastodon-profile").href = profile.profile_url;
+}
+
+
+function updateKeybaseCard(profile) {
+    document.getElementById("keybase-status").textContent = "found";
+
+    document.getElementById("keybase-avatar").src = profile.avatar_url;
+
+    document.getElementById("keybase-name").textContent = profile.full_name || "-";
+
+    document.getElementById("keybase-username").textContent = "@" + profile.username;
+
+    document.getElementById("keybase-bio").textContent = profile.bio || "No Bio";
+
+    document.getElementById("keybase-verified").textContent = profile.verified ? "yes" : "Nooo";
+
+    document.getElementById("keybase-followers").textContent = profile.followers;
+
+    document.getElementById("keybase-following").textContent = profile.following;
+
+    document.getElementById("keybase-profile").href = profile.profile_url;
+
 }
 
 // end
