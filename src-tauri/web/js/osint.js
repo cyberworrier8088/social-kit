@@ -106,6 +106,7 @@ async function searchUsername() {
         const glProgress = document.getElementById("gitlab-progress");
         const mtProgress = document.getElementById("mastodon-progress");
         const kbProgress = document.getElementById("keybase-progress");
+        const dtProgress = document.getElementById("devto-progress");
 
 
         if (ghProgress) ghProgress.textContent = "Github: Searching...";
@@ -113,7 +114,8 @@ async function searchUsername() {
         if (igProgress) igProgress.textContent = "Instagram: Searching...";
         if (glProgress) glProgress.textContent = "Gitlab: Searching...";
         if (mtProgress) mtProgress.textContent = "Mastodon: Searching...";
-        if (kbProgress) kbProgress.textContent = "keybase: Searchinnggggg.."
+        if (kbProgress) kbProgress.textContent = "keybase: Searchinnggggg..";
+        if (dtProgress) dtProgress.textContent = "dev.to: Searching..."
 
         const results = await invoke(
             "search_all_command",
@@ -162,6 +164,11 @@ async function searchUsername() {
         if (results.keybase) {
 
             updateKeybaseCard(results.keybase);
+        }
+
+        if (results.devto) {
+
+            updateDevtoCard(results.devto);
         }
     }
 
@@ -281,6 +288,26 @@ function updateKeybaseCard(profile) {
 
     document.getElementById("keybase-profile").href = profile.profile_url;
 
+}
+
+
+function updateDevtoCard(profile) {
+
+    document.getElementById("devto-status").textContent = "FOund!";
+
+    document.getElementById("devto-avatar").src = profile.avatar_url;
+
+    document.getElementById("devto-name").textContent = profile.name || "-";
+
+    document.getElementById("devto-username").textContent = "@" + profile.username;
+
+    document.getElementById("devto-bio").textContent = profile.bio || 'No bio';
+
+    document.getElementById("devto-followers").textContent = profile.followers;
+
+    document.getElementById("devto-joined").textContent = profile.joined_date.split("T")[0];
+
+    document.getElementById("devto-profile").href = profile.profile_url;
 }
 
 // end

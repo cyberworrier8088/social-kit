@@ -10,6 +10,7 @@ use super::{
     gitlab::search_gitlab,
     keybase::{search_keybase, KeybaseProfile},
     mastodon::{search_mastodon, MastodonProfile},
+    devto::{search_devto, DevtoProfile},
     types::{
         GithubProfile,
         RedditProfile,
@@ -35,6 +36,8 @@ pub struct SearchResults {
     pub mastodon: Option<MastodonProfile>,
 
     pub keybase: Option<KeybaseProfile>,
+
+    pub devto: Option<DevtoProfile>,
 }
 
 pub fn search_all(
@@ -83,6 +86,15 @@ pub fn search_all(
     });
 
 
+    let devto_thread = thread::spawn({
+        let username = username.clone();
+
+        move || {
+            search_devto(&username).ok()
+        }
+    });
+
+
 
     let github = github_thread.join().unwrap();
 
@@ -95,6 +107,8 @@ pub fn search_all(
     let mastodon = mastodon_thread.join().unwrap();
     
     let keybase = keybase_thread.join().unwrap();
+
+    let devto = devto_thread.join().unwrap();
 
     SearchResults {
 
@@ -109,5 +123,7 @@ pub fn search_all(
         mastodon,
         
         keybase,
+
+        devto,
     }
 }

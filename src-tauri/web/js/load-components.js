@@ -33,6 +33,7 @@ loadComponent("gitlab-card-container", "components/gitlab-card.html");
 loadComponent("network-search", "components/network-search.html");
 loadComponent("mastodon-card-container", "components/mastodon-card.html");
 loadComponent("keybase-card-container", "components/keybase-card.html");
+loadComponent("devto-card-container", "components/devto-card.html");
 
 loadStatusCard("cpu-card", "CPU", "Processor Utilization");
 loadStatusCard("memory-card", "Memory", "System RAM Usage");

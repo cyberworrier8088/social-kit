@@ -5,6 +5,7 @@ pub mod instagram;
 pub mod gitlab;
 pub mod mastodon;
 pub mod keybase;
+pub mod devto;
 pub mod manager;
 
 
@@ -53,6 +54,15 @@ pub fn search_keybase_command(
     username: String,
 ) -> Result<keybase::KeybaseProfile, String> {
     keybase::search_keybase(&username)
+}
+
+
+#[tauri::command]
+pub fn search_devto_command(
+    username: String,
+) -> Result<devto::DevtoProfile, String> {
+
+    devto::search_devto(&username)
 }
 
 
