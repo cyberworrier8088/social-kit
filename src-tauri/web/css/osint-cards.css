@@ -296,3 +296,35 @@
 #devto-profile:hover {
     background: #ff8c00;
 }
+
+
+/* Stack OverFlow Spacific */
+#stackoverflow-avatar {
+    border: 2px solid #f48034;
+    box-shadow: 0 0 20px rgba(244, 128, 36, 0.25);
+}
+
+#stackoverflow-card .stats strong {
+    color: #f48024;
+
+}
+
+#stackoverflow-profile {
+    background: #f48024;
+}
+
+#stackoverflow-profile:hover {
+    background: #ff9d3d;
+}
+
+#stackoverflow-reputation {
+    color: #9ca3af;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#stackoverflow-location {
+    color: #9ca3af;
+    margin-bottom: 10px;
+}

@@ -34,6 +34,7 @@ loadComponent("network-search", "components/network-search.html");
 loadComponent("mastodon-card-container", "components/mastodon-card.html");
 loadComponent("keybase-card-container", "components/keybase-card.html");
 loadComponent("devto-card-container", "components/devto-card.html");
+loadComponent("stackoverflow-card-container", "components/stackoverflow-card.html");
 
 loadStatusCard("cpu-card", "CPU", "Processor Utilization");
 loadStatusCard("memory-card", "Memory", "System RAM Usage");

@@ -6,6 +6,7 @@ pub mod gitlab;
 pub mod mastodon;
 pub mod keybase;
 pub mod devto;
+pub mod stackoverflow;
 pub mod manager;
 
 
@@ -71,6 +72,13 @@ pub fn search_instagram_command(
 ) -> Result<instagram::InstagramProfile, String> {
 
     instagram::search_instagram(&username)
+}
+
+#[tauri::command]
+pub fn search_stackoverflow_command(
+    username: String,
+) -> Result<stackoverflow::StackOverFlowProfile, String> {
+    stackoverflow::search_stackoverflow(&username)
 }
 
 

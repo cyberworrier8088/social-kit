@@ -107,6 +107,7 @@ async function searchUsername() {
         const mtProgress = document.getElementById("mastodon-progress");
         const kbProgress = document.getElementById("keybase-progress");
         const dtProgress = document.getElementById("devto-progress");
+        const soProgress = document.getElementById("stackoverflow-progress");
 
 
         if (ghProgress) ghProgress.textContent = "Github: Searching...";
@@ -115,7 +116,8 @@ async function searchUsername() {
         if (glProgress) glProgress.textContent = "Gitlab: Searching...";
         if (mtProgress) mtProgress.textContent = "Mastodon: Searching...";
         if (kbProgress) kbProgress.textContent = "keybase: Searchinnggggg..";
-        if (dtProgress) dtProgress.textContent = "dev.to: Searching..."
+        if (dtProgress) dtProgress.textContent = "dev.to: Searching...";
+        if (soProgress) soProgress.textContent = "StackOverflow: Searching...";
 
         const results = await invoke(
             "search_all_command",
@@ -169,6 +171,11 @@ async function searchUsername() {
         if (results.devto) {
 
             updateDevtoCard(results.devto);
+        }
+
+        if (results.stackoverflow) {
+
+            updateStackOverflowCard(results.stackoverflow);
         }
     }
 
@@ -239,7 +246,7 @@ function updateGitLabCard(profile) {
 
 function updateMastodonCard(profile) {
 
-    document.getElementById("mastodon-status").textContent = "Foundd";
+    document.getElementById("mastodon-status").textContent = "Mastodonn";
     document.getElementById("mastodon-avatar").src = profile.avatar_url;
     document.getElementById("mastodon-name").textContent = profile.display_name || "-";
     document.getElementById("mastodon-username").textContent = "@" + profile.username;
@@ -315,4 +322,26 @@ function updateInstagramCard(profile) {
     document.getElementById("instagram-posts").textContent = profile.posts;
 }
 
+
+function updateStackOverflowCard(profile) {
+    document.getElementById("stackoverflow-status").textContent = "FOund!";
+
+    document.getElementById("stackoverflow-avatar").src = profile.profile_image;
+
+    document.getElementById("stackoverflow-name").textContent = profile.display_name || "Not FOund";
+
+    document.getElementById("stackoverflow-location").textContent = "-" + (profile.location || "Not Specified");
+
+    document.getElementById("stackoverflow-reputation").textContent = "Reputation: " + profile.reputation;
+
+    document.getElementById("stackoverflow-gold").textContent = profile.badge_counts.gold;
+
+    document.getElementById("stackoverflow-silver").textContent = profile.badge_counts.silver;
+
+    document.getElementById("stackoverflow-bronze").textContent = profile.badge_counts.bronze;
+
+    document.getElementById("stackoverflow-profile").href = profile.link;
+
+
+}
 // end

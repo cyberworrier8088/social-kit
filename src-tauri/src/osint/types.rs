@@ -95,3 +95,24 @@ pub struct GitLabProfile {
     pub following: u32,
 }
 
+
+
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
+pub struct BadgeCounts {
+    pub gold: u32,
+    pub silver: u32,
+    pub bronze: u32,
+}
+
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
+pub struct StackOverFlowProfile {
+
+    pub display_name: String,
+    pub reputation: u32,
+    pub user_id: u32,
+    pub badge_counts: BadgeCounts,
+    pub profile_image: String,
+    pub location: String,
+    pub link: String,
+    pub created_date: String,
+}

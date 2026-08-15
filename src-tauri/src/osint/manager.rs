@@ -11,6 +11,7 @@ use super::{
     keybase::{search_keybase, KeybaseProfile},
     mastodon::{search_mastodon, MastodonProfile},
     devto::{search_devto, DevtoProfile},
+    stackoverflow::{search_stackoverflow, StackOverFlowProfile},
     types::{
         GithubProfile,
         RedditProfile,
@@ -37,6 +38,8 @@ pub struct SearchResults {
     pub keybase: Option<KeybaseProfile>,
 
     pub devto: Option<DevtoProfile>,
+
+    pub stackoverflow: Option<StackOverFlowProfile>,
 }
 
 pub fn search_all(
@@ -102,6 +105,16 @@ pub fn search_all(
     });
 
 
+    let stackoverflow_thread = thread::spawn({
+
+        let username = username.clone();
+
+        move || {
+            search_stackoverflow(&username).ok()
+        }
+    });
+
+
 
     let github = github_thread.join().unwrap();
 
@@ -116,6 +129,9 @@ pub fn search_all(
     let keybase = keybase_thread.join().unwrap();
 
     let devto = devto_thread.join().unwrap();
+
+
+    let stackoverflow = stackoverflow_thread.join().unwrap();
 
 
 
@@ -134,6 +150,8 @@ pub fn search_all(
         keybase,
 
         devto,
+
+        stackoverflow,
         
     }
 }
