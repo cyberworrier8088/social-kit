@@ -6,7 +6,7 @@ use std::thread;
 use super::{
     github::search_github,
     reddit::search_riddit,
-    instagram::search_instagram,
+    instagram::{search_instagram, InstagramProfile},
     gitlab::search_gitlab,
     keybase::{search_keybase, KeybaseProfile},
     mastodon::{search_mastodon, MastodonProfile},
@@ -14,7 +14,6 @@ use super::{
     types::{
         GithubProfile,
         RedditProfile,
-        InstagramProfile,
         GitLabProfile,
         UsernameSearchRequest,
     },
@@ -94,13 +93,21 @@ pub fn search_all(
         }
     });
 
+    let instagram_thread = thread::spawn({
+        let username = username.clone();
+
+        move || {
+            search_instagram(&username).ok()
+        }
+    });
+
 
 
     let github = github_thread.join().unwrap();
 
     let reddit = reddit_thread.join().unwrap();
 
-    let instagram = search_instagram(&request.username).ok();
+    let instagram = instagram_thread.join().unwrap();
 
     let gitlab = search_gitlab(&request.username).ok();
 
@@ -109,6 +116,8 @@ pub fn search_all(
     let keybase = keybase_thread.join().unwrap();
 
     let devto = devto_thread.join().unwrap();
+
+
 
     SearchResults {
 
@@ -125,5 +134,6 @@ pub fn search_all(
         keybase,
 
         devto,
+        
     }
 }

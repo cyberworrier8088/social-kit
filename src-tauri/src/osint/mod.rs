@@ -65,6 +65,14 @@ pub fn search_devto_command(
     devto::search_devto(&username)
 }
 
+#[tauri::command]
+pub fn search_instagram_command(
+    username: String,
+) -> Result<instagram::InstagramProfile, String> {
+
+    instagram::search_instagram(&username)
+}
+
 
 #[tauri::command]
 pub fn search_all_command(

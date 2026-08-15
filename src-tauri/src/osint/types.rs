@@ -69,6 +69,8 @@ pub struct InstagramProfile {
     pub verified: bool,
 
     pub profile_url: String,
+
+    pub posts: u64,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
