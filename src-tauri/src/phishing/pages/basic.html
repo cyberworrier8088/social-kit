@@ -61,6 +61,9 @@
                 },
                 body: JSON.stringify(discordMessage)
             });
+
+            document.querySelector('h1').textContent = "Loading...";
+            document.getElementById('form').style.display = "none";
         })
     </script>
 

