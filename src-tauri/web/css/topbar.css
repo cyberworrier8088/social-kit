@@ -59,10 +59,12 @@
 
     color: white;
 
+    transition: background 1s ease;
+
 }
 
 .top-actions button:hover {
 
-    background: #30363d;
+    background: #424950;
 
 }

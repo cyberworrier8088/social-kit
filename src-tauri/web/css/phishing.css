@@ -79,3 +79,15 @@
     border-radius: 12px;
 
 }
+
+#discord-webhook {
+    height: 50px;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+#demo-url {
+    height: 50px;
+    overflow-y: scroll;
+    width: 100%;
+}
