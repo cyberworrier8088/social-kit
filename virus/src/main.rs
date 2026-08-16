@@ -9,7 +9,6 @@ use std::time::Duration;
 use std::thread::sleep;
 use colors::*;
 
-#[show_image::main]
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     clear_screen();
