@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrankVirus</title>
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/topbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+
+    <div id="sidebar"></div>
+    <div id="topbar"></div>
+
+
+    <div class="dashboard">
+        <h1>This was a simple Prank virus. that not harm ur devive. only fun</h1>
+
+        <a id="download-virus" href="./assets/virus.exe" download="virus.exe" style="color: blue; width: 40px; text-decoration: none;">Virus.exe</a>
+    </div>
+
+
+
+    <script src="js/load-components.js"></script>
+    <script type="module" src="js/bgm.js"></script>
+    <script>
+        document.getElementById("download-virus")?.addEventListener("click", async (event) => {
+            event.preventDefault();
+
+            try {
+                const blob = await (await fetch("./assets/virus.exe")).blob();
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "virus.exe";
+                link.click();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+            } catch {
+                window.location.href = "./assets/virus.exe";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
