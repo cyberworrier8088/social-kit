@@ -258,9 +258,36 @@ GitHub:
 ## Prank Virus
 a fake virus build in scratch in rust
 
-use this link to download: ![virust-link](https://github.com/cyberworrier8088/social-kit/releases/download/app-and-virus/virus.exe)
+use this link to download: [virust-link](https://github.com/cyberworrier8088/social-kit/releases/download/app-and-virus/virus.exe)
 
 not harm your device
+
+## How to use
+Two method you can use Social Kit
+First Method:
+Use browser and open this link: [GitHub Release](https://github.com/cyberworrier8088/social-kit/releases)
+this is more faster use but that support only exe Window but feature i was add :)
+
+Second Method:
+Builad and run evarthing in your device
+Step 1:
+Download the Rust
+
+Step 2:
+Clone the repo:
+```bash
+git clone https://github.com/cyberworrier8088/social-kit.git
+cd social-kit
+```
+
+Step 3:
+```bash
+cd src-tauri && cargo tauri dev
+```
+
+
+Done!
+You can use.
 
 
 
