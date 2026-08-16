@@ -58,6 +58,12 @@ GitHub:
 
 ![Git Hub](readmeAssets/github.png)
 
+Reddit:
+- Karma
+- Bio
+
+![Reddit](readmeAssets/reddit.png)
+
 ## NetWork
 A powerfull module you scan a domain or ip more info get
 
