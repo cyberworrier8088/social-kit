@@ -179,6 +179,7 @@ Geo Location:
 - Organization
 
 ![Geo-Location](readmeAssets/geolication.png)
+![Reverse-dns](readmeAssets/reversedns.png)
 
 Hosting Interlligence:
 - IP
