@@ -245,3 +245,6 @@ Facebook:
 
 X (twitter):
 ![X](readmeAssets/x.png)
+
+Gmail:
+![Gmail](readmeAssets/gmail.png)
