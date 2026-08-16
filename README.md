@@ -232,6 +232,8 @@ This all login page.
 how working:
 This is working You select a template and Dicord WebHook add Genarte link clcik time that attach a temlte page attach a Dicord Webhook(main probm is no secure easly inspect in web see ur webhook but our in local host so its safe)
 
+### Templates are not my fully. i used github repos temples for more easy.
+
 Main of Phsing:
 ![phising-eduction](readmeAssets/phisingeduction.png)
 
@@ -240,3 +242,6 @@ Instagram:
 
 Facebook:
 ![facebook](readmeAssets/facebook.png)
+
+X (twitter):
+![X](readmeAssets/x.png)
