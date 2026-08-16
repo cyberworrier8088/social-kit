@@ -1,3 +1,5 @@
+![hacktime](https://hackatime.hackclub.com/api/v1/badge/U0B312F4FS5/cyberworrier8088/social-kit)
+
 # social-kit
 Social-Kit a powerful tool build in rust for security research
 
