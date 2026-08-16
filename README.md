@@ -146,6 +146,8 @@ DNS Intelligence:
 - NS Records
 - CNAME Records
 
+![DNS-Ping](readmeAssets/dnsint.png)
+
 SSL Certificate:
 - Subject
 - Issuer
