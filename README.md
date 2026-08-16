@@ -65,13 +65,13 @@ Reddit:
 ![Reddit](readmeAssets/reddit.png)
 
 Instagram (stell a probm):
-- Avatar
+- Avatar (Not working :())
 - Id
 - Bio
 - Followers
 - Following
 - Posts
-
+![Instagram](readmeAssets\instagram.png)
 GitLab:
 - Avatar
 - Name
