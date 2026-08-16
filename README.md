@@ -64,6 +64,15 @@ Reddit:
 
 ![Reddit](readmeAssets/reddit.png)
 
+Instagram (stell a probm):
+- Avatar
+- Id
+- Bio
+- Followers
+- Following
+- Posts
+No Image :( becuse stell not working
+
 ## NetWork
 A powerfull module you scan a domain or ip more info get
 
