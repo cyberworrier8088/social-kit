@@ -31,3 +31,11 @@ rustls = { version = "0.23", features = ["ring"] }
 rustls-native-certs = "0.8"
 rustls-pemfile = "2"
 x509-parser = "0.18"
+
+[profile.release]
+opt-level = "z"     # Optimize for binary size ("3" for maximum speed)
+lto = true          # Enable Link-Time Optimization across dependencies
+codegen-units = 1   # Reduce parallel code generation to maximize optimization
+panic = "abort"     # Remove panic unwinding to save significant binary space
+strip = true        # Automatically strip symbols and debuginfo from the binary
+
