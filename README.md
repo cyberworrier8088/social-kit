@@ -33,7 +33,7 @@ port scanner a powerfull module this project
 - Support Service see
 - More fast scanning
 
-![Port Scanner](readmeAssets\portscanner.png)
+![Port-Scanner](readmeAssets/portscanner.png)
 
 ## OSINT
 This also a powerfull Spy searching moduke
@@ -135,6 +135,8 @@ A powerfull module you scan a domain or ip more info get
 - find domain ip address (Steal not accurte)
 - ping status show live monitoring 
 - ICMP scan
+
+![Ping](readmeAssets/ipping.png)
 
 DNS Intelligence:
 - A Records
