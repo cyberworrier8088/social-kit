@@ -179,7 +179,7 @@ Geo Location:
 - Organization
 
 ![Geo-Location](readmeAssets/geolication.png)
-![Reverse-dns](readmeAssets/reversedns.png)
+
 
 Hosting Interlligence:
 - IP
@@ -201,6 +201,8 @@ Reverse DNS:
 - IP
 - Hostname
 
+![Reverse-dns](readmeAssets/reversedns.png)
+
 HTTP Information
 - Status Code
 - Server
@@ -209,3 +211,5 @@ HTTP Information
 - Content-Length
 - Final URL
 - Technologies
+
+![httpinfo](readmeAssets/httpinfo.png)
