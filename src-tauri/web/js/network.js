@@ -330,7 +330,7 @@ async function analyzeTarget() {
 
                 }
 
-                ageElement.textContent = '${years} years, ${months} months';
+                ageElement.textContent = `${years} years, ${months} months`;
 
             } else {
 

@@ -4,9 +4,9 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Deserialize, Serialize)]
 pub struct UsernameSearchRequest {
     pub username: String,
+
+    pub platform: Option<String>,
 }
-
-
 #[derive(Debug, Deserialize, Serialize)]
 pub struct GithubProfile {
     
@@ -51,28 +51,6 @@ pub struct RedditProfile {
 }
 
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct InstagramProfile {
-
-    pub username: String,
-
-    pub full_name: String,
-
-    pub biography: String,
-
-    pub profile_pic_url: String,
-
-    pub followers: u64,
-
-    pub following: u64,
-
-    pub verified: bool,
-
-    pub profile_url: String,
-
-    pub posts: u64,
-}
-
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub struct GitLabProfile {
 
@@ -93,26 +71,4 @@ pub struct GitLabProfile {
     pub followers: u32,
 
     pub following: u32,
-}
-
-
-
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct BadgeCounts {
-    pub gold: u32,
-    pub silver: u32,
-    pub bronze: u32,
-}
-
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct StackOverFlowProfile {
-
-    pub display_name: String,
-    pub reputation: u32,
-    pub user_id: u32,
-    pub badge_counts: BadgeCounts,
-    pub profile_image: String,
-    pub location: String,
-    pub link: String,
-    pub created_date: String,
 }

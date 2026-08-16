@@ -2,28 +2,37 @@
 
 
 const { invoke } = window.__TAURI__.core;
+const platforms = ["github", "reddit", "instagram", "gitlab", "mastodon", "keybase", "devto", "stackoverflow"];
 
 function clearResults() {
-    document.getElementById("results-body").innerHTML = "";
-
+    const body = document.getElementById("results-body");
+    if (body) body.innerHTML = "";
 }
 
-function addResult(result) {
+function addResult(platform, profile) {
     const body = document.getElementById("results-body");
+    if (!body) return;
 
     const row = document.createElement("tr");
+    const url = profile?.html_url || profile?.profile_url || profile?.web_url || profile?.link;
 
-    row.innerHTML = `
-        <td>${result.platform}</td>
-        <td>${result.found ? "Found" : "Not Found"}</td>
-        <td>
-            ${result.found
-            ? `<a href="${result.profile_url}" target="_blank">${result.profile_url}</a>`
-            : "-"
-        }
-        </td>
-    `;
+    for (const value of [platform, profile ? "Found" : "Not found"]) {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.appendChild(cell);
+    }
 
+    const linkCell = document.createElement("td");
+    if (url) {
+        const link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        link.textContent = url;
+        linkCell.appendChild(link);
+    } else {
+        linkCell.textContent = "-";
+    }
+    row.appendChild(linkCell);
     body.appendChild(row);
 }
 
@@ -85,105 +94,57 @@ function setStatus(message) {
 
 
 async function searchUsername() {
+    const username = document.getElementById("username").value.trim().toLowerCase();
+    const platform = document.getElementById("platform").value;
 
-    setLoading("Searching ...");
-
-    console.log("Search button clicked");
-    clearResults();
-
-    const username = document.getElementById("username").value.trim();
-
-    if (username === "") {
-        alert("Enter a Username. ");
-
+    if (!/^[a-z0-9][a-z0-9._-]*$/.test(username)) {
+        alert("Enter a username using letters, numbers, hyphens, underscores, or periods.");
         return;
     }
 
-    try {
-        const ghProgress = document.getElementById("github-progress");
-        const rdProgress = document.getElementById("reddit-progress");
-        const igProgress = document.getElementById("instagram-progress");
-        const glProgress = document.getElementById("gitlab-progress");
-        const mtProgress = document.getElementById("mastodon-progress");
-        const kbProgress = document.getElementById("keybase-progress");
-        const dtProgress = document.getElementById("devto-progress");
-        const soProgress = document.getElementById("stackoverflow-progress");
+    const updates = {
+        github: updateGitHubCard,
+        reddit: updateRedditCard,
+        instagram: updateInstagramCard,
+        gitlab: updateGitLabCard,
+        mastodon: updateMastodonCard,
+        keybase: updateKeybaseCard,
+        devto: updateDevtoCard,
+        stackoverflow: updateStackOverflowCard,
+    };
 
+    setLoading(true);
+    clearResults();
 
-        if (ghProgress) ghProgress.textContent = "Github: Searching...";
-        if (rdProgress) rdProgress.textContent = "Reddit: Searching...";
-        if (igProgress) igProgress.textContent = "Instagram: Searching...";
-        if (glProgress) glProgress.textContent = "Gitlab: Searching...";
-        if (mtProgress) mtProgress.textContent = "Mastodon: Searching...";
-        if (kbProgress) kbProgress.textContent = "keybase: Searchinnggggg..";
-        if (dtProgress) dtProgress.textContent = "dev.to: Searching...";
-        if (soProgress) soProgress.textContent = "StackOverflow: Searching...";
-
-        const results = await invoke(
-            "search_all_command",
-            {
-                request: {
-                    username
-                }
-            }
-        );
-
-        console.log(results);
-
-        if (ghProgress) ghProgress.textContent = results.github ? "Github: Found!" : "Github: Not Found";
-        if (rdProgress) rdProgress.textContent = results.reddit ? "Reddit: Found!" : "Reddit: Not Found";
-        if (igProgress) igProgress.textContent = results.instagram ? "Instagram: Found!" : "Instagram: Not Found";
-        if (glProgress) glProgress.textContent = results.gitlab ? "Gitlab: Found!" : "Gitlab: Not Found";
-        if (mtProgress) mtProgress.textContent = results.mastodon ? "Mastodon: Found!" : "Mastodon: Not Found";
-        if (kbProgress) kbProgress.textContent = results.keybase ? "Keybase: Found!!!!!!!" : "Keybase: Not Found";
-        if (dtProgress) dtProgress.textContent = results.devto ? "dev.to: Found!" : "dev.to: Not Found";
-        if (soProgress) soProgress.textContent = results.stackoverflow ? "StackOverflow: Found!" : "StackOverflow: Not Found";
-
-        if (results.github) {
-
-            updateGitHubCard(results.github);
-
-        }
-        if (results.reddit) {
-
-            updateRedditCard(results.reddit);
-        }
-
-        if (results.instagram) {
-
-            updateInstagramCard(results.instagram);
-
-        }
-
-        if (results.gitlab) {
-
-            updateGitLabCard(results.gitlab);
-        }
-
-        if (results.mastodon) {
-
-            updateMastodonCard(results.mastodon);
-        }
-
-        if (results.keybase) {
-
-            updateKeybaseCard(results.keybase);
-        }
-
-        if (results.devto) {
-
-            updateDevtoCard(results.devto);
-        }
-
-        if (results.stackoverflow) {
-
-            updateStackOverflowCard(results.stackoverflow);
-        }
+    for (const name of platforms) {
+        const selected = platform === "all" || platform === name;
+        const card = document.getElementById(`${name}-card`) || document.getElementById(name);
+        const progress = document.getElementById(`${name}-progress`);
+        if (card) card.hidden = !selected;
+        if (progress) progress.textContent = `${name}: ${selected ? "Searching..." : "Not selected"}`;
     }
 
+    try {
+        const results = await invoke("search_all_command", { request: { username, platform } });
 
-    catch (error) {
+        for (const name of platforms) {
+            if (platform !== "all" && platform !== name) continue;
+
+            const profile = results[name];
+            const card = document.getElementById(`${name}-card`) || document.getElementById(name);
+            const status = document.getElementById(`${name}-status`);
+            const progress = document.getElementById(`${name}-progress`);
+
+            if (card) card.hidden = !profile;
+            if (status) status.textContent = profile ? "Found" : "Not found";
+            if (progress) progress.textContent = `${name}: ${profile ? "Found" : "Not found"}`;
+            addResult(name, profile);
+            if (profile) updates[name](profile);
+        }
+    } catch (error) {
         console.error(error);
+        setStatus("Search failed");
+        alert(`Search failed: ${error}`);
     } finally {
         setLoading(false);
     }
@@ -194,6 +155,11 @@ function clearForm() {
     document.getElementById("username").value = "";
 
     clearResults();
+
+    for (const name of platforms) {
+        const card = document.getElementById(`${name}-card`) || document.getElementById(name);
+        if (card) card.hidden = true;
+    }
 }
 
 
@@ -235,7 +201,7 @@ function updateGitLabCard(profile) {
 
     document.getElementById("gitlab-bio").textContent = profile.bio || "No bio";
 
-    document.getElementById("gitlab-followers").textContent = profile.following;
+    document.getElementById("gitlab-followers").textContent = profile.followers;
 
     document.getElementById("gitlab-following").textContent = profile.following;
 
@@ -248,7 +214,7 @@ function updateGitLabCard(profile) {
 
 function updateMastodonCard(profile) {
 
-    document.getElementById("mastodon-status").textContent = "Mastodonn";
+    document.getElementById("mastodon-status").textContent = "Found";
     document.getElementById("mastodon-avatar").src = profile.avatar_url;
     document.getElementById("mastodon-name").textContent = profile.display_name || "-";
     document.getElementById("mastodon-username").textContent = "@" + profile.username;
@@ -261,7 +227,7 @@ function updateMastodonCard(profile) {
 
 
 function updateKeybaseCard(profile) {
-    document.getElementById("keybase-status").textContent = "found";
+    document.getElementById("keybase-status").textContent = "Found";
 
     document.getElementById("keybase-avatar").src = profile.avatar_url;
 
@@ -271,7 +237,7 @@ function updateKeybaseCard(profile) {
 
     document.getElementById("keybase-bio").textContent = profile.bio || "No Bio";
 
-    document.getElementById("keybase-verified").textContent = profile.verified ? "yes" : "Nooo";
+    document.getElementById("keybase-verified").textContent = profile.verified ? "Yes" : "No";
 
     document.getElementById("keybase-followers").textContent = profile.followers;
 
@@ -284,7 +250,7 @@ function updateKeybaseCard(profile) {
 
 function updateDevtoCard(profile) {
 
-    document.getElementById("devto-status").textContent = "FOund!";
+    document.getElementById("devto-status").textContent = "Found";
 
     document.getElementById("devto-avatar").src = profile.avatar_url;
 
@@ -296,7 +262,7 @@ function updateDevtoCard(profile) {
 
     document.getElementById("devto-followers").textContent = profile.followers;
 
-    document.getElementById("devto-joined").textContent = profile.joined_date.split("T")[0];
+    document.getElementById("devto-joined").textContent = profile.joined_date.split("T")[0] || "-";
 
     document.getElementById("devto-profile").href = profile.profile_url;
 }
@@ -326,13 +292,13 @@ function updateInstagramCard(profile) {
 
 
 function updateStackOverflowCard(profile) {
-    document.getElementById("stackoverflow-status").textContent = "FOund!";
+    document.getElementById("stackoverflow-status").textContent = "Found";
 
     document.getElementById("stackoverflow-avatar").src = profile.profile_image;
 
-    document.getElementById("stackoverflow-name").textContent = profile.display_name || "Not FOund";
+    document.getElementById("stackoverflow-name").textContent = profile.display_name || "Not found";
 
-    document.getElementById("stackoverflow-location").textContent = "-" + (profile.location || "Not Specified");
+    document.getElementById("stackoverflow-location").textContent = profile.location || "Not specified";
 
     document.getElementById("stackoverflow-reputation").textContent = "Reputation: " + profile.reputation;
 

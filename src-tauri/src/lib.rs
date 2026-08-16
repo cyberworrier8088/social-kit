@@ -29,6 +29,12 @@ pub fn run() {
       scanner::scan,
       osint::search_git,
       osint::search_riddit,
+      osint::search_reddit,
+      osint::search_mastodon_command,
+      osint::search_keybase_command,
+      osint::search_devto_command,
+      osint::search_instagram_command,
+      osint::search_stackoverflow_command,
       osint::search_all_command,
       network::analyze_network,
       network::ping_network,
@@ -37,5 +43,4 @@ pub fn run() {
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
-
 

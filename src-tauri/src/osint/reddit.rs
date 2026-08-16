@@ -1,4 +1,5 @@
 use reqwest::blocking::Client;
+use serde_json::Value;
 
 use super::types::RedditProfile;
 
@@ -6,7 +7,7 @@ pub fn search_riddit(
     username: &str,
 ) -> Result<RedditProfile, String> {
 
-    let url = format!("https://www.reddit.com/user/{}/", username);
+    let url = format!("https://www.reddit.com/user/{}/about.json", username);
 
     let client = Client::new();
 
@@ -17,23 +18,22 @@ pub fn search_riddit(
         .send()
         .map_err(|e| e.to_string())?;
 
-    if !response.status().is_success() && response.status().as_u16() != 403 {
+    if !response.status().is_success() {
         return Err(format!("Reddit return {}", response.status()));
     }
 
-    let text = response.text().unwrap_or_default();
+    let json: Value = response.json().map_err(|e| e.to_string())?;
+    let profile = &json["data"];
 
-    // Check if the user does not exist
-    if text.contains("nobody on Reddit goes by that name") || text.contains("page not found") {
+    if profile.is_null() {
         return Err("User not found".into());
     }
 
-    // Since we are not parsing the JSON anymore, return the URL with default values
     Ok(RedditProfile {
-        name: username.to_string(),
-        icon_img: "https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png".to_string(),
-        total_karma: 0,
-        created_utc: 0.0,
+        name: profile["name"].as_str().unwrap_or(username).to_string(),
+        icon_img: profile["icon_img"].as_str().unwrap_or("").to_string(),
+        total_karma: profile["total_karma"].as_u64().unwrap_or(0) as u32,
+        created_utc: profile["created_utc"].as_f64().unwrap_or(0.0),
         profile_url: format!("https://www.reddit.com/user/{}", username),
     })
 }

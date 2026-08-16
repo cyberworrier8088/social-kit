@@ -19,7 +19,7 @@ pub struct KeybaseProfile {
 
 pub fn search_keybase(username: &str) -> Result<KeybaseProfile, String> {
 
-    let url = format!("https://keybase.io/api/1.0/user/lookup?username={}", username);
+    let url = format!("https://keybase.io/_/api/1.0/user/lookup.json?usernames={}", username);
 
     let client = Client::new();
 
@@ -32,31 +32,17 @@ pub fn search_keybase(username: &str) -> Result<KeybaseProfile, String> {
 
     let json: Value = response.json().map_err(|e| e.to_string())?;
 
-    let profile = &json["profile"];
-
-    let avatar_url = if let Some(pic) = profile.get("pictures") {
-
-        if let Some(primary) = pic.get("primary") {
-
-            primary.get("url").and_then(|u| u.as_str()).unwrap_or("").to_string()
-
-        } else {
-            "".to_string()
-        }
-
-    } else {
-        "".to_string()
-    };
+    let profile = json["them"].as_array().and_then(|users| users.first()).ok_or("User not found on Keybase")?;
 
 
     Ok(KeybaseProfile {
         username: profile["basics"]["username"].as_str().unwrap_or("").to_string(),
         full_name: profile["profile"]["full_name"].as_str().unwrap_or("").to_string(),
         bio: profile["profile"]["bio"].as_str().unwrap_or("").to_string(),
-        avatar_url,
+        avatar_url: profile["pictures"]["primary"]["url"].as_str().unwrap_or("").to_string(),
         followers: 0,
         following: 0,
         profile_url: format!("https://keybase.io/{}", username),
-        verified: profile["id"]["is_deleted"].as_bool().unwrap_or(false) == false,
+        verified: profile["proofs_summary"]["all"].as_array().is_some_and(|proofs| !proofs.is_empty()),
     }) 
 }

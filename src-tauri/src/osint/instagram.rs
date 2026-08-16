@@ -22,7 +22,7 @@ pub fn search_instagram(username: &str) -> Result<InstagramProfile, String> {
 
     let client = Client::builder().timeout(std::time::Duration::from_secs(10)).build().map_err(|e| e.to_string())?;
 
-    let response = client.get(&url).header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36").header("Accept", "application/json").send().map_err(|e| e.to_string())?;
+    let response = client.get(&url).header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36").header("X-IG-App-ID", "936619743392459").header("Accept", "application/json").send().map_err(|e| e.to_string())?;
 
     if !response.status().is_success() {
         return Err(format!("Instagram API error: {}", response.status()));

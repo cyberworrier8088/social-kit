@@ -39,6 +39,13 @@ pub fn search_riddit (
     username: String,
 ) -> Result<RedditProfile, String> {
 
+    search_reddit(username)
+}
+
+#[tauri::command]
+pub fn search_reddit(
+    username: String,
+) -> Result<RedditProfile, String> {
     fetch_reddit_profile(&username)
 }
 
@@ -84,8 +91,15 @@ pub fn search_stackoverflow_command(
 
 #[tauri::command]
 pub fn search_all_command(
-    request: UsernameSearchRequest,
-) -> SearchResults {
+    mut request: UsernameSearchRequest,
+) -> Result<SearchResults, String> {
+    request.username = request.username.trim().to_ascii_lowercase();
 
-    search_all(request)
+    if request.username.is_empty()
+        || !request.username.chars().all(|character| character.is_ascii_alphanumeric() || matches!(character, '-' | '_' | '.'))
+    {
+        return Err("Username may contain only lowercase letters, numbers, hyphens, underscores, and periods".into());
+    }
+
+    Ok(search_all(request))
 }

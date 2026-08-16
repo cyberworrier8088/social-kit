@@ -71,7 +71,15 @@ Instagram (stell a probm):
 - Followers
 - Following
 - Posts
-No Image :( becuse stell not working
+
+GitLab:
+- Avatar
+- Name
+- Bio
+- Followers
+- Following
+- Location
+- Orgranziation
 
 ## NetWork
 A powerfull module you scan a domain or ip more info get

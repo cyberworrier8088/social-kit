@@ -46,9 +46,11 @@ pub fn search_all(
     request: UsernameSearchRequest,
 ) -> SearchResults {
 
-    let username = request.username.clone();
+    let username = request.username;
+    let platform = request.platform.unwrap_or_else(|| "all".into()).trim().to_ascii_lowercase();
+    let selected = |name: &str| platform == "all" || platform == name;
 
-    let github_thread = thread::spawn({
+    let github_thread = selected("github").then(|| thread::spawn({
 
         let username = username.clone();
 
@@ -57,12 +59,13 @@ pub fn search_all(
             search_github(
                 UsernameSearchRequest {
                     username,
+                    platform: None,
                 }
             ).ok()
         }
-    });
+    }));
 
-    let reddit_thread = thread::spawn({
+    let reddit_thread = selected("reddit").then(|| thread::spawn({
 
         let username = username.clone();
 
@@ -70,68 +73,73 @@ pub fn search_all(
 
             search_riddit(&username).ok()
         }
-    });
+    }));
 
-    let mastodon_thread = thread::spawn({
+    let mastodon_thread = selected("mastodon").then(|| thread::spawn({
 
         let username = username.clone();
         move || {
             search_mastodon(&username).ok()
         }
-    });
+    }));
 
-    let keybase_thread = thread::spawn({
+    let keybase_thread = selected("keybase").then(|| thread::spawn({
         let username = username.clone();
         move || {
             search_keybase(&username).ok()
         }
-    });
+    }));
 
 
-    let devto_thread = thread::spawn({
+    let devto_thread = selected("devto").then(|| thread::spawn({
         let username = username.clone();
 
         move || {
             search_devto(&username).ok()
         }
-    });
+    }));
 
-    let instagram_thread = thread::spawn({
+    let instagram_thread = selected("instagram").then(|| thread::spawn({
         let username = username.clone();
 
         move || {
             search_instagram(&username).ok()
         }
-    });
+    }));
 
 
-    let stackoverflow_thread = thread::spawn({
+    let stackoverflow_thread = selected("stackoverflow").then(|| thread::spawn({
 
         let username = username.clone();
 
         move || {
             search_stackoverflow(&username).ok()
         }
-    });
+    }));
 
 
 
-    let github = github_thread.join().unwrap();
+    let gitlab_thread = selected("gitlab").then(|| thread::spawn({
+        let username = username.clone();
+        move || search_gitlab(&username).ok()
+    }));
 
-    let reddit = reddit_thread.join().unwrap();
+    let github = github_thread.and_then(|thread| thread.join().ok().flatten());
 
-    let instagram = instagram_thread.join().unwrap();
+    let reddit = reddit_thread.and_then(|thread| thread.join().ok().flatten());
 
-    let gitlab = search_gitlab(&request.username).ok();
+    let instagram = instagram_thread.and_then(|thread| thread.join().ok().flatten());
 
-    let mastodon = mastodon_thread.join().unwrap();
+    let gitlab = gitlab_thread.and_then(|thread| thread.join().ok().flatten());
+
+    let mastodon = mastodon_thread.and_then(|thread| thread.join().ok().flatten());
     
-    let keybase = keybase_thread.join().unwrap();
+    let keybase = keybase_thread.and_then(|thread| thread.join().ok().flatten());
 
-    let devto = devto_thread.join().unwrap();
+    let devto = devto_thread.and_then(|thread| thread.join().ok().flatten());
 
 
-    let stackoverflow = stackoverflow_thread.join().unwrap();
+    let stackoverflow = stackoverflow_thread.and_then(|thread| thread.join().ok().flatten());
 
 
 
