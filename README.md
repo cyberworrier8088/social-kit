@@ -234,3 +234,9 @@ This is working You select a template and Dicord WebHook add Genarte link clcik 
 
 Main of Phsing:
 ![phising-eduction](readmeAssets/phisingeduction.png)
+
+Instagram:
+![instagramphising](readmeAssets/instagramphising.png)
+
+Facebook:
+![facebook](readmeAssets/facebook.png)
