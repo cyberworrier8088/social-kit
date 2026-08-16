@@ -155,6 +155,8 @@ SSL Certificate:
 - Expires
 - TLS Version
 
+![SSL-Ping](readmeAssets/sslcert.png)
+
 Security Header:
 - HSTS
 - Content-Security-Policy
