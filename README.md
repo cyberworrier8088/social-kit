@@ -213,3 +213,24 @@ HTTP Information
 - Technologies
 
 ![httpinfo](readmeAssets/httpinfo.png)
+
+## Phishing(Not For Malicious use)
+This is a basic level module build for euduction. stell this run in local only but you can avalible:
+
+features:
+- Templates
+- Discord WebHook
+
+Templates:
+- Facebook
+- Instagram
+- X (Twitter)
+- GitHub
+- Google gmail
+
+This all login page.
+how working:
+This is working You select a template and Dicord WebHook add Genarte link clcik time that attach a temlte page attach a Dicord Webhook(main probm is no secure easly inspect in web see ur webhook but our in local host so its safe)
+
+main
+![phishing](readmeAssets/phisingeduction.png)
