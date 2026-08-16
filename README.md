@@ -71,6 +71,7 @@ Instagram (stell a probm):
 - Followers
 - Following
 - Posts
+
 ![Instagram](readmeAssets/instagram.png)
 
 GitLab:
@@ -81,6 +82,7 @@ GitLab:
 - Following
 - Location
 - Orgranziation
+
 ![GitLab](readmeAssets/gitlab.png)
 
 mastodon:
@@ -90,7 +92,18 @@ mastodon:
 - Followers
 - Following
 - Post
+
 ![mastodon](readmeAssets/mastodon.png)
+
+Keybase:
+- Avatar (id)
+- Name
+- Bio
+- Verified
+- Followers
+- Following
+
+![Keybase](readmeAssets/keybase.png)
 
 ## NetWork
 A powerfull module you scan a domain or ip more info get
