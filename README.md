@@ -25,6 +25,8 @@ dashboard you can see:
 - Uptime
 of Your Device.
 
+![dashboard](readmeAssets/dashboard.png)
+
 ## Port Scanner
 port scanner a powerfull module this project
 
