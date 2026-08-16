@@ -254,3 +254,13 @@ Gmail:
 
 GitHub:
 ![GitHub](readmeAssets/githubp.png)
+
+## Prank Virus
+a fake virus build in scratch in rust
+
+use this link to download: ![virust-link](https://github.com/cyberworrier8088/social-kit/releases/download/app-and-virus/virus.exe)
+
+not harm your device
+
+
+
