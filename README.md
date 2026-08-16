@@ -178,6 +178,8 @@ Geo Location:
 - ISP
 - Organization
 
+![Geo-Location](readmeAssets/geolication.png)
+
 Hosting Interlligence:
 - IP
 - ISP
