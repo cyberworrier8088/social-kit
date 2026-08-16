@@ -291,3 +291,5 @@ You can use.
 
 
 
+Full APP LInk: [APP.exe](https://github.com/cyberworrier8088/social-kit/releases/download/app-and-virus/app.exe)
+Prank virus only: [Virus.exe](https://github.com/cyberworrier8088/social-kit/releases/download/app-and-virus/virus.exe)
