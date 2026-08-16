@@ -1,3 +1,8 @@
+// src/scanner/tcp.rs
+// what is tcp?
+// a: TCP (Transmission Control Protocol) is a connection-oriented communication protocol that establishes a reliable connection between two devices on a network.
+// in simple 
+
 use std::{
     net::{TcpStream, ToSocketAddrs},
     time::Duration,

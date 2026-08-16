@@ -136,6 +136,8 @@ async function searchUsername() {
         if (glProgress) glProgress.textContent = results.gitlab ? "Gitlab: Found!" : "Gitlab: Not Found";
         if (mtProgress) mtProgress.textContent = results.mastodon ? "Mastodon: Found!" : "Mastodon: Not Found";
         if (kbProgress) kbProgress.textContent = results.keybase ? "Keybase: Found!!!!!!!" : "Keybase: Not Found";
+        if (dtProgress) dtProgress.textContent = results.devto ? "dev.to: Found!" : "dev.to: Not Found";
+        if (soProgress) soProgress.textContent = results.stackoverflow ? "StackOverflow: Found!" : "StackOverflow: Not Found";
 
         if (results.github) {
 

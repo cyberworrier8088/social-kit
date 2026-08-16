@@ -1,3 +1,5 @@
+// src/scanner/types.rs;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize)]
